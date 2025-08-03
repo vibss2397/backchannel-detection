@@ -1,3 +1,0 @@
-convokit
-pandas
-tqdm

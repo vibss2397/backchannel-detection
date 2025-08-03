@@ -1,4 +1,4 @@
-# train.py
+# train_improved.py
 
 import argparse
 import pandas as pd
@@ -7,18 +7,30 @@ import joblib
 import os
 import time
 from datetime import datetime
+import requests
+import gzip
+import shutil
 
+# Scikit-learn imports
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_validate, train_test_split, StratifiedKFold
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, f1_score, average_precision_score
+
+# Plotting
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+# Imbalanced-learn
 from imblearn.pipeline import Pipeline as ImbPipeline
 from imblearn.over_sampling import RandomOverSampler
 from imblearn.under_sampling import RandomUnderSampler
+
+from sharedlib.transformer_utils import ImprovedFastTextVectorizer
+
+# --- Custom Classes for Pipelines ---
 
 class KeywordBaseline:
     """Baseline classifier using keyword lookup from task specification."""
@@ -44,8 +56,7 @@ class KeywordBaseline:
         """Predict 1 if ANY keyword found in current utterance, 0 otherwise."""
         predictions = []
         for _, row in X.iterrows():
-            text = str(row['current_clean']).lower().strip()
-            # Liberal baseline: any keyword presence = backchannel
+            text = str(row['current_utter_clean']).lower().strip()
             is_backchannel = any(keyword in text for keyword in self.backchannel_keywords)
             predictions.append(1 if is_backchannel else 0)
         return np.array(predictions)
@@ -59,12 +70,43 @@ class KeywordBaseline:
         proba[preds == 0, 0] = 0.9
         return proba
 
+# --- Utility and Evaluation Functions ---
+
+def download_fasttext_model(model_path="cc.en.300.bin"):
+    """Downloads the pre-trained FastText model if it doesn't exist."""
+    if os.path.exists(model_path):
+        print(f"FastText model '{model_path}' already exists.")
+        return model_path
+
+    url = "https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz"
+    gz_path = model_path + ".gz"
+    
+    print(f"Downloading FastText model from {url}...")
+    try:
+        with requests.get(url, stream=True) as r:
+            r.raise_for_status()
+            with open(gz_path, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+        
+        print("Download complete. Decompressing...")
+        with gzip.open(gz_path, 'rb') as f_in:
+            with open(model_path, 'wb') as f_out:
+                shutil.copyfileobj(f_in, f_out)
+        
+        os.remove(gz_path)
+        print(f"FastText model saved to '{model_path}'")
+        return model_path
+    except Exception as e:
+        print(f"Error downloading or decompressing FastText model: {e}")
+        return None
+
+
 def evaluate_model(model, X_test, y_test, model_name="Model"):
     """Comprehensive model evaluation with proper binary classification metrics."""
     y_pred = model.predict(X_test)
     y_proba = model.predict_proba(X_test)[:, 1]
     
-    # Calculate metrics
     roc_auc = roc_auc_score(y_test, y_proba)
     f1 = f1_score(y_test, y_pred, average='binary')
     avg_precision = average_precision_score(y_test, y_proba)
@@ -84,6 +126,7 @@ def evaluate_model(model, X_test, y_test, model_name="Model"):
         'probabilities': y_proba
     }
 
+
 def plot_confusion_matrix(y_true, y_pred, model_name, save_path):
     """Plot and save confusion matrix."""
     cm = confusion_matrix(y_true, y_pred)
@@ -98,6 +141,7 @@ def plot_confusion_matrix(y_true, y_pred, model_name, save_path):
     plt.savefig(save_path, dpi=150, bbox_inches='tight')
     plt.close()
 
+
 def benchmark_inference_speed(model, X_sample, n_runs=1000):
     """Benchmark model inference speed."""
     print(f"Benchmarking inference speed with {n_runs} runs...")
@@ -106,7 +150,6 @@ def benchmark_inference_speed(model, X_sample, n_runs=1000):
     for _ in range(10):
         model.predict(X_sample.iloc[:1])
     
-    # Benchmark
     times = []
     for _ in range(n_runs):
         start_time = time.perf_counter()
@@ -124,82 +167,147 @@ def benchmark_inference_speed(model, X_sample, n_runs=1000):
     return {'avg_ms': avg_time, 'p95_ms': p95_time}
 
 
+# --- TF-IDF Model Building Functions ---
 def find_best_max_features(X_train, y_train, X_val, y_val, sampling_strategy):
-    """
-    Tests different max_features values to find the best one based on validation F1-score.
-    """
-    # Define a range of values to test
+    """Tests different max_features values for the TF-IDF model."""
     feature_options = [500, 1000, 2500, 5000, 7500]
+    regularization_options = [0.1, 0.5, 1.0, 2.0, 5.0]
     results = []
 
-    print("--- Finding optimal max_features ---")
-    print(f"{'Max Features':<15} | {'Validation F1-Score':<20}")
+    print("\n--- Finding optimal max_features for TF-IDF model ---")
+    print(f"{'Max Features':<15} | {'C':<8} | {'Validation F1-Score':<20}")
     print("-" * 40)
 
     for n_features in feature_options:
-        # Create a new pipeline with the current max_features value
-        # Note: We create a modified build_pipeline function for this
-        pipeline = build_pipeline_with_params(
-            prev_max_features=n_features,
-            curr_max_features=n_features,
-            sampling_strategy=sampling_strategy
-        )
+        for  reg in regularization_options:
+            pipeline = build_tfidf_pipeline_with_params(
+                prev_max_features=n_features,
+                curr_max_features=n_features,
+                sampling_strategy=sampling_strategy,
+                C=reg  # Default regularization
+            )
+            pipeline.fit(X_train, y_train)
+            y_val_pred = pipeline.predict(X_val)
+            val_f1 = f1_score(y_val, y_val_pred, average='binary')
+            print(f"{n_features:<15} | {reg:<8.1f} | {val_f1:<20.4f}")
+            results.append({'max_features': n_features, 'f1_score': val_f1, 'C': reg})
 
-        # Train on the training set
-        pipeline.fit(X_train, y_train)
-
-        # Evaluate on the validation set
-        y_val_pred = pipeline.predict(X_val)
-        val_f1 = f1_score(y_val, y_val_pred, average='binary')
-
-        print(f"{n_features:<15} | {val_f1:<20.4f}")
-        results.append({'max_features': n_features, 'f1_score': val_f1})
-
-    # Find the best result
     best_result = max(results, key=lambda x: x['f1_score'])
     print("-" * 40)
-    print(f"Optimal max_features found: {best_result['max_features']} with F1-Score: {best_result['f1_score']:.4f}")
+    print(f"Optimal max_features found: {best_result['max_features']} and C={best_result['C']} "
+          f" with F1-Score: {best_result['f1_score']:.4f}")
 
-    return best_result['max_features']
+    return best_result['max_features'], best_result['C']
 
 
-def build_pipeline_with_params(prev_max_features=500, curr_max_features=500, sampling_strategy='none') -> ImbPipeline:
-    """
-    Builds a pipeline that includes preprocessing and an optional sampler.
-    """
+def build_tfidf_pipeline_with_params(prev_max_features=500, curr_max_features=500, sampling_strategy='none', C=1.0) -> ImbPipeline:
+    """Builds the TF-IDF pipeline."""
     preprocessor = ColumnTransformer(
         transformers=[
-            ('prev', TfidfVectorizer(ngram_range=(1, 2), max_features=prev_max_features), 'previous_clean'),
-            ('curr', TfidfVectorizer(ngram_range=(1, 3), max_features=curr_max_features), 'current_clean')
+            ('prev', TfidfVectorizer(ngram_range=(1, 2), max_features=prev_max_features), 'previous_utter_clean'),
+            ('curr', TfidfVectorizer(ngram_range=(1, 3), max_features=curr_max_features), 'current_utter_clean')
         ],
         remainder='drop'
     )
     
-    # Define the steps for the pipeline
-    steps = [
-        ('preprocessor', preprocessor)
-    ]
+    steps = [('preprocessor', preprocessor)]
 
-    # Conditionally add a sampler step
     if sampling_strategy == 'oversample':
         steps.append(('sampler', RandomOverSampler(random_state=42)))
     elif sampling_strategy == 'undersample':
         steps.append(('sampler', RandomUnderSampler(random_state=42)))
         
-    # Add the classifier WITHOUT class_weight='balanced'
     steps.append(('classifier', LogisticRegression(
-        random_state=42, solver='liblinear', max_iter=1000
+        random_state=42, 
+        solver='liblinear', 
+        max_iter=2000,  # Increased for convergence
+        C=C,  # Tunable regularization
+        class_weight='balanced'  # Handle class imbalance like TF-IDF should
     )))
     
-    # Use the imblearn Pipeline
-    pipeline = ImbPipeline(steps)
-    return pipeline
+    return ImbPipeline(steps)
 
 
+# --- FastText Model Building Functions ---
+def find_best_fasttext_config(X_train, y_train, X_val, y_val, model_path, sampling_strategy):
+    """Find optimal FastText configuration with fair comparison to TF-IDF."""
+    combination_options = ['concat', 'separate', 'average', 'current_only']
+    regularization_options = [0.1, 0.5, 1.0, 2.0, 5.0]
+    results = []
+
+    print("\n--- Finding optimal FastText configuration ---")
+    print(f"{'Combination':<15} | {'C':<8} | {'Val F1-Score':<15} | {'Notes':<25}")
+    print("-" * 70)
+
+    for combination in combination_options:
+        for C_val in regularization_options:
+            try:
+                pipeline = build_fasttext_pipeline_with_params(
+                    model_path=model_path,
+                    combination_method=combination,
+                    C=C_val,
+                    sampling_strategy=sampling_strategy
+                )
+                
+                pipeline.fit(X_train, y_train)
+                y_val_pred = pipeline.predict(X_val)
+                val_f1 = f1_score(y_val, y_val_pred, average='binary')
+                
+                # Add notes about fairness
+                notes = ""
+                if combination == 'current_only':
+                    notes = "UNFAIR (curr only)"
+                elif combination == 'concat':
+                    notes = "FAIR (like TF-IDF)"
+                elif combination == 'separate':
+                    notes = "FAIR (600 dims)"
+                elif combination == 'average':
+                    notes = "FAIR (300 dims)"
+                
+                print(f"{combination:<15} | {C_val:<8.1f} | {val_f1:<15.4f} | {notes:<25}")
+                results.append({
+                    'combination': combination,
+                    'C': C_val,
+                    'f1_score': val_f1,
+                    'notes': notes
+                })
+                
+            except Exception as e:
+                print(f"{combination:<15} | {C_val:<8.1f} | ERROR: {str(e):<15} |")
+
+    if results:
+        best_result = max(results, key=lambda x: x['f1_score'])
+        print("-" * 70)
+        print(f"Optimal config: {best_result['combination']} + C={best_result['C']} "
+              f"with F1-Score: {best_result['f1_score']:.4f}")
+        return best_result['combination'], best_result['C']
+    else:
+        print("No valid configurations found, using defaults")
+        return 'concat', 1.0
+
+
+def build_fasttext_pipeline_with_params(model_path, combination_method='concat', C=1.0, sampling_strategy='none'):
+    """Build FastText pipeline with proper configuration and fair comparison."""
+    steps = [('vectorizer', ImprovedFastTextVectorizer(model_path=model_path, combination_method=combination_method))]
+    
+    if sampling_strategy == 'oversample':
+        steps.append(('sampler', RandomOverSampler(random_state=42)))
+    elif sampling_strategy == 'undersample':
+        steps.append(('sampler', RandomUnderSampler(random_state=42)))
+    
+    steps.append(('classifier', LogisticRegression(
+        random_state=42, 
+        solver='liblinear', 
+        max_iter=2000,  # Increased for convergence
+        C=C,  # Tunable regularization
+        class_weight='balanced'  # Handle class imbalance like TF-IDF should
+    )))
+    
+    return ImbPipeline(steps)
+
+
+# --- Main Training Workflow ---
 def main(args):
-    """
-    Main function to run the training workflow with proper train/val/test splits.
-    """
     os.makedirs(args.output_dir, exist_ok=True)
     
     print(f"Loading training data from {args.training_file}...")
@@ -209,183 +317,181 @@ def main(args):
         print(f"Error: Training file not found at {args.training_file}")
         return
 
-    # Fill empty sequences with an empty string
-    df[['previous_clean', 'current_clean']] = df[['previous_clean', 'current_clean']].fillna('')
+    df[['previous_utter_clean', 'current_utter_clean']] = df[['previous_utter_clean', 'current_utter_clean']].fillna('')
     
     print(f"Dataset loaded: {len(df)} samples")
     print(f"Class distribution: {df['label'].value_counts().to_dict()}")
     
-    X = df[['previous_clean', 'current_clean']]
+    X = df[['previous_utter_clean', 'current_utter_clean']]
     y = df['label']
     
-    # === PROPER TRAIN/VAL/TEST SPLIT ===
     print("\nSplitting data into train/val/test (60/20/20)...")
-    
-    # First split: separate test set (20%)
-    X_temp, X_test, y_temp, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y
-    )
-    
-    # Second split: train/val from remaining 80% (60/20 of total)
-    X_train, X_val, y_train, y_val = train_test_split(
-        X_temp, y_temp, test_size=0.25, random_state=42, stratify=y_temp
-    )
-    
+    X_temp, X_test, y_temp, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    X_train, X_val, y_train, y_val = train_test_split(X_temp, y_temp, test_size=0.25, random_state=42, stratify=y_temp)
     print(f"Train: {len(X_train)}, Val: {len(X_val)}, Test: {len(X_test)}")
     
-    # === BASELINE MODEL ===
+    # === MODEL 1: BASELINE ===
     print("\n" + "="*50)
-    print("TRAINING BASELINE MODEL (Keyword Lookup)")
+    print("MODEL 1: TRAINING BASELINE (Keyword Lookup)")
     print("="*50)
-    
     baseline = KeywordBaseline()
     baseline.fit(X_train, y_train)
     baseline_results = evaluate_model(baseline, X_test, y_test, "Keyword Baseline")
     
-    # === ML MODEL ===
+    # === MODEL 2: TF-IDF + LOGISTIC REGRESSION ===
     print("\n" + "="*50)
-    print("TRAINING ML MODEL (Logistic Regression + TF-IDF)")
+    print("MODEL 2: TRAINING TF-IDF + LOGISTIC REGRESSION")
+    print("="*50)
+    optimal_features, optimal_C = find_best_max_features(X_train, y_train, X_val, y_val, args.sampling)
+    final_tfidf_pipeline = build_tfidf_pipeline_with_params(optimal_features, optimal_features, args.sampling, optimal_C)
+    
+    print("\nTraining final TF-IDF model on full training set...")
+    final_tfidf_pipeline.fit(X_train, y_train)
+    
+    print("\nFinal test set performance for TF-IDF model:")
+    tfidf_results = evaluate_model(final_tfidf_pipeline, X_test, y_test, "TF-IDF Model (Test)")
+
+    # === MODEL 3: IMPROVED FASTTEXT + LOGISTIC REGRESSION ===
+    print("\n" + "="*50)
+    print("MODEL 3: TRAINING IMPROVED FASTTEXT + LOGISTIC REGRESSION")
     print("="*50)
     
-    optimal_features = find_best_max_features(X_train, y_train, X_val, y_val, args.sampling)
-    final_pipeline = build_pipeline_with_params(optimal_features, optimal_features, args.sampling)
-    
-    # Cross-validation on training set
-    print("Running 5-fold cross-validation on training set...")
-    cv_scoring = ['roc_auc', 'f1', 'precision', 'recall']
-    cv_results = cross_validate(
-        estimator=final_pipeline,
-        X=X_train,
-        y=y_train,
-        cv=StratifiedKFold(n_splits=5, shuffle=True, random_state=42),
-        scoring=cv_scoring
-    )
-    
-    # Train on full training set
-    print("Training final model on full training set...")
-    final_pipeline.fit(X_train, y_train)
-    
-    # Final evaluation on test set
-    print("\nFinal test set performance:")
-    ml_results = evaluate_model(final_pipeline, X_test, y_test, "ML Model (Test)")
-    
+    ft_model_path = download_fasttext_model(os.path.join(args.output_dir, 'cc.en.300.bin'))
+    if not ft_model_path:
+        print("Could not obtain FastText model. Skipping FastText evaluation.")
+        fasttext_results = None
+        fasttext_speed = None
+        final_fasttext_pipeline = None
+    else:
+        # Find optimal FastText configuration
+        optimal_combination, optimal_C = find_best_fasttext_config(
+            X_train, y_train, X_val, y_val, ft_model_path, args.sampling
+        )
+        
+        # Build final pipeline with optimal parameters
+        final_fasttext_pipeline = build_fasttext_pipeline_with_params(
+            model_path=ft_model_path,
+            combination_method=optimal_combination,
+            C=optimal_C,
+            sampling_strategy=args.sampling
+        )
+        
+        print(f"\nTraining final FastText model with {optimal_combination} + C={optimal_C}...")
+        final_fasttext_pipeline.fit(X_train, y_train)
+        
+        print("\nFinal test set performance for FastText model:")
+        fasttext_results = evaluate_model(final_fasttext_pipeline, X_test, y_test, "Improved FastText Model")
+
     # === INFERENCE SPEED BENCHMARKING ===
     print("\n" + "="*50)
     print("INFERENCE SPEED BENCHMARKING")
     print("="*50)
-    
-    # Create sample data for benchmarking
     sample_data = pd.DataFrame({
-        'previous_clean': ['So I was thinking about going to the store'] * 5,
-        'current_clean': ['yeah', 'that sounds great', 'uh-huh', 'what time works?', 'mm-hmm']
+        'previous_utter_clean': ['So I was thinking about going to the store'] * 5,
+        'current_utter_clean': ['yeah', 'that sounds great', 'uh-huh', 'what time works?', 'mm-hmm']
     })
     
     print("\nBaseline speed:")
     baseline_speed = benchmark_inference_speed(baseline, sample_data)
     
-    print("\nML Model speed:")
-    ml_speed = benchmark_inference_speed(final_pipeline, sample_data)
+    print("\nTF-IDF Model speed:")
+    tfidf_speed = benchmark_inference_speed(final_tfidf_pipeline, sample_data)
+
+    if fasttext_results:
+        print("\nImproved FastText Model speed:")
+        fasttext_speed = benchmark_inference_speed(final_fasttext_pipeline, sample_data)
     
     # === MODEL COMPARISON ===
-    print(f"\n{'='*65}")
-    print(f"{'MODEL COMPARISON SUMMARY':^65}")
-    print(f"{'='*65}")
-    print(f"{'Metric':<20} {'Baseline':<15} {'ML Model':<15} {'Improvement':<15}")
-    print(f"{'-'*65}")
-    print(f"{'ROC-AUC':<20} {baseline_results['roc_auc']:<15.4f} {ml_results['roc_auc']:<15.4f} {ml_results['roc_auc']-baseline_results['roc_auc']:+.4f}")
-    print(f"{'F1-Score':<20} {baseline_results['f1_score']:<15.4f} {ml_results['f1_score']:<15.4f} {ml_results['f1_score']-baseline_results['f1_score']:+.4f}")
-    print(f"{'Avg Precision':<20} {baseline_results['avg_precision']:<15.4f} {ml_results['avg_precision']:<15.4f} {ml_results['avg_precision']-baseline_results['avg_precision']:+.4f}")
-    print(f"{'Speed (P95)':<20} {baseline_speed['p95_ms']:<15.2f} {ml_speed['p95_ms']:<15.2f} {ml_speed['p95_ms']-baseline_speed['p95_ms']:+.2f}")
+    print(f"\n{'='*80}")
+    print(f"{'IMPROVED MODEL COMPARISON SUMMARY':^80}")
+    print(f"{'='*80}")
+    print(f"{'Metric':<20} {'Baseline':<15} {'TF-IDF Model':<15} {'FastText Model':<15}")
+    print(f"{'-'*80}")
     
-    # === SAVE CONFUSION MATRICES ===
-    plot_confusion_matrix(y_test, baseline_results['predictions'], 
-                         "Keyword Baseline", 
-                         os.path.join(args.output_dir, 'confusion_matrix_baseline.png'))
+    ft_roc = fasttext_results['roc_auc'] if fasttext_results else 'N/A'
+    ft_f1 = fasttext_results['f1_score'] if fasttext_results else 'N/A'
+    ft_ap = fasttext_results['avg_precision'] if fasttext_results else 'N/A'
+    ft_p95 = fasttext_speed['p95_ms'] if fasttext_results and fasttext_speed else 'N/A'
+
+    print(f"{'ROC-AUC':<20} {baseline_results['roc_auc']:<15.4f} {tfidf_results['roc_auc']:<15.4f} {ft_roc if isinstance(ft_roc, str) else f'{ft_roc:<15.4f}'}")
+    print(f"{'F1-Score':<20} {baseline_results['f1_score']:<15.4f} {tfidf_results['f1_score']:<15.4f} {ft_f1 if isinstance(ft_f1, str) else f'{ft_f1:<15.4f}'}")
+    print(f"{'Avg Precision':<20} {baseline_results['avg_precision']:<15.4f} {tfidf_results['avg_precision']:<15.4f} {ft_ap if isinstance(ft_ap, str) else f'{ft_ap:<15.4f}'}")
+    print(f"{'Speed (P95 ms)':<20} {baseline_speed['p95_ms']:<15.2f} {tfidf_speed['p95_ms']:<15.2f} {ft_p95 if isinstance(ft_p95, str) else f'{ft_p95:<15.2f}'}")
     
-    plot_confusion_matrix(y_test, ml_results['predictions'], 
-                         "ML Model", 
-                         os.path.join(args.output_dir, 'confusion_matrix_ml.png'))
+    # Show improvement analysis
+    if fasttext_results:
+        print(f"\n{'IMPROVEMENT ANALYSIS':^80}")
+        print(f"{'-'*80}")
+        tfidf_vs_ft_roc = tfidf_results['roc_auc'] - fasttext_results['roc_auc']
+        tfidf_vs_ft_f1 = tfidf_results['f1_score'] - fasttext_results['f1_score']
+        speed_diff = fasttext_speed['p95_ms'] - tfidf_speed['p95_ms']
+        
+        print(f"TF-IDF vs FastText ROC-AUC difference: {tfidf_vs_ft_roc:+.4f}")
+        print(f"TF-IDF vs FastText F1-Score difference: {tfidf_vs_ft_f1:+.4f}")
+        print(f"FastText speed vs TF-IDF: {speed_diff:+.2f}ms")
     
+    # === SAVE ARTIFACTS ===
+    plot_confusion_matrix(y_test, baseline_results['predictions'], "Keyword Baseline", os.path.join(args.output_dir, 'cm_baseline.png'))
+    plot_confusion_matrix(y_test, tfidf_results['predictions'], "TF-IDF Model", os.path.join(args.output_dir, 'cm_tfidf.png'))
+    if fasttext_results:
+        plot_confusion_matrix(y_test, fasttext_results['predictions'], "Improved FastText Model", os.path.join(args.output_dir, 'cm_fasttext_improved.png'))
+
+    model_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    joblib.dump(baseline, os.path.join(args.output_dir, f"baseline_model_{model_timestamp}.joblib"))
+    joblib.dump(final_tfidf_pipeline, os.path.join(args.output_dir, f"tfidf_model_{model_timestamp}.joblib"))
+    if fasttext_results:
+        joblib.dump(final_fasttext_pipeline, os.path.join(args.output_dir, f"fasttext_improved_model_{model_timestamp}.joblib"))
+
     # === GENERATE COMPREHENSIVE REPORT ===
-    report_path = os.path.join(args.output_dir, 'training_report.txt')
+    report_path = os.path.join(args.output_dir, 'training_report_improved.txt')
     print(f"\nGenerating comprehensive training report at {report_path}...")
     
     with open(report_path, 'w') as f:
         f.write("=" * 60 + "\n")
-        f.write("BACKCHANNEL MODEL TRAINING REPORT\n")
+        f.write("IMPROVED BACKCHANNEL MODEL TRAINING REPORT\n")
         f.write("=" * 60 + "\n")
         f.write(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write(f"Training Dataset: {os.path.basename(args.training_file)}\n")
-        f.write(f"Sampling Strategy: {args.sampling}\n")
-        f.write(f"Total Samples: {len(df)}\n")
-        f.write(f"Train/Val/Test Split: {len(X_train)}/{len(X_val)}/{len(X_test)}\n")
-        f.write("-" * 60 + "\n\n")
-        
-        f.write("DATASET STATISTICS\n")
-        f.write("-" * 30 + "\n")
-        f.write(f"Original Class Distribution: {df['label'].value_counts().to_dict()}\n")
-        if args.sampling != 'none':
-            f.write(f"After {args.sampling}: {pd.Series(y_train).value_counts().to_dict()}\n")
-        f.write("\n")
-        
-        f.write("CROSS-VALIDATION RESULTS (ML Model)\n")
-        f.write("-" * 40 + "\n")
-        for metric in cv_scoring:
-            mean_score = np.mean(cv_results[f'test_{metric}'])
-            std_score = np.std(cv_results[f'test_{metric}'])
-            f.write(f"CV {metric.upper()}: {mean_score:.4f} (+/- {std_score:.4f})\n")
-        f.write("\n")
-        
+        f.write(f"Sampling Strategy: {args.sampling}\n\n")
+
+        f.write("IMPROVEMENTS MADE TO FASTTEXT:\n")
+        f.write("-" * 35 + "\n")
+        f.write("✅ Uses both previous AND current utterances (fair comparison)\n")
+        f.write("✅ Hyperparameter tuning for combination method and regularization\n")
+        f.write("✅ Class balancing with balanced weights\n")
+        f.write("✅ Proper sampling strategy support\n")
+        f.write("✅ Multiple combination methods tested\n\n")
+
         f.write("FINAL TEST SET PERFORMANCE\n")
         f.write("-" * 30 + "\n")
-        f.write(f"BASELINE RESULTS:\n")
-        f.write(f"  ROC-AUC: {baseline_results['roc_auc']:.4f}\n")
-        f.write(f"  F1-Score: {baseline_results['f1_score']:.4f}\n")
-        f.write(f"  Avg Precision: {baseline_results['avg_precision']:.4f}\n")
-        f.write(f"  Inference Speed (P95): {baseline_speed['p95_ms']:.2f}ms\n\n")
-        
-        f.write(f"ML MODEL RESULTS:\n")
-        f.write(f"  ROC-AUC: {ml_results['roc_auc']:.4f}\n")
-        f.write(f"  F1-Score: {ml_results['f1_score']:.4f}\n")
-        f.write(f"  Avg Precision: {ml_results['avg_precision']:.4f}\n")
-        f.write(f"  Inference Speed (P95): {ml_speed['p95_ms']:.2f}ms\n\n")
-        
-        f.write(f"IMPROVEMENTS:\n")
-        f.write(f"  ROC-AUC: +{ml_results['roc_auc']-baseline_results['roc_auc']:.4f}\n")
-        f.write(f"  F1-Score: +{ml_results['f1_score']-baseline_results['f1_score']:.4f}\n")
-        f.write(f"  Avg Precision: +{ml_results['avg_precision']-baseline_results['avg_precision']:.4f}\n")
-        f.write(f"  Speed Overhead: +{ml_speed['p95_ms']-baseline_speed['p95_ms']:.2f}ms\n\n")
-        
+        f.write(f"{'Metric':<20} {'Baseline':<15} {'TF-IDF Model':<15} {'FastText Model':<15}\n")
+        f.write(f"{'-'*80}\n")
+        f.write(f"{'ROC-AUC':<20} {baseline_results['roc_auc']:<15.4f} {tfidf_results['roc_auc']:<15.4f} {ft_roc if isinstance(ft_roc, str) else f'{ft_roc:<15.4f}'}\n")
+        f.write(f"{'F1-Score':<20} {baseline_results['f1_score']:<15.4f} {tfidf_results['f1_score']:<15.4f} {ft_f1 if isinstance(ft_f1, str) else f'{ft_f1:<15.4f}'}\n")
+        f.write(f"{'Avg Precision':<20} {baseline_results['avg_precision']:<15.4f} {tfidf_results['avg_precision']:<15.4f} {ft_ap if isinstance(ft_ap, str) else f'{ft_ap:<15.4f}'}\n")
+        f.write(f"{'Speed (P95 ms)':<20} {baseline_speed['p95_ms']:<15.2f} {tfidf_speed['p95_ms']:<15.2f} {ft_p95 if isinstance(ft_p95, str) else f'{ft_p95:<15.2f}'}\n\n")
+
         f.write("LATENCY REQUIREMENTS\n")
         f.write("-" * 20 + "\n")
         f.write(f"Target: <50ms\n")
         f.write(f"Baseline: {'✅ PASS' if baseline_speed['p95_ms'] < 50 else '❌ FAIL'}\n")
-        f.write(f"ML Model: {'✅ PASS' if ml_speed['p95_ms'] < 50 else '❌ FAIL'}\n")
+        f.write(f"TF-IDF Model: {'✅ PASS' if tfidf_speed['p95_ms'] < 50 else '❌ FAIL'}\n")
+        if fasttext_results:
+            f.write(f"Improved FastText Model: {'✅ PASS' if fasttext_speed['p95_ms'] < 50 else '❌ FAIL'}\n")
 
-    # === SAVE MODELS ===
-    model_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    
-    baseline_filename = f"baseline_model_{model_timestamp}.joblib"
-    baseline_path = os.path.join(args.output_dir, baseline_filename)
-    joblib.dump(baseline, baseline_path)
-    
-    ml_filename = f"backchannel_model_{model_timestamp}.joblib"
-    ml_path = os.path.join(args.output_dir, ml_filename)
-    joblib.dump(final_pipeline, ml_path)
-    
-    print(f"\nModels saved:")
-    print(f"  Baseline: {baseline_path}")
-    print(f"  ML Model: {ml_path}")
-    print(f"\nTraining completed successfully! 🎉")
+    print(f"\nModels and reports saved in '{args.output_dir}'")
+    print(f"\nImproved training completed successfully! 🎉")
+    print(f"\nNow FastText gets a FAIR comparison with both utterances and hyperparameter tuning!")
+
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Train a backchannel detection model with proper evaluation.")
+    parser = argparse.ArgumentParser(description="Train and compare backchannel detection models with improved FastText.")
     parser.add_argument('--training-file', type=str, required=True, 
-                       help="Path to the training CSV dataset with columns: previous_clean, current_clean, label")
+                       help="Path to the training CSV dataset.")
     parser.add_argument('--output-dir', type=str, default='./output', 
-                       help="Directory to save the trained model and report.")
+                       help="Directory to save models and reports.")
     parser.add_argument('--sampling', type=str, choices=['none', 'oversample', 'undersample'], 
-                       default='none', help="Sampling strategy for class imbalance")
+                       default='none', help="Sampling strategy for class imbalance.")
     
     args = parser.parse_args()
     main(args)

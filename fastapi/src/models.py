@@ -3,6 +3,8 @@ import joblib
 import pandas as pd
 import os
 
+# Import the classes from src.models - this MUST match the training imports
+from sharedlib.transformer_utils import ImprovedFastTextVectorizer, ColumnSelector
 
 class KeyWordBaselineModel:
     def __init__(self):
@@ -59,11 +61,71 @@ class BackChannelDetectionModel:
             dict: A dictionary with 'is_backchannel' and 'confidence' keys.
         """
         input = pd.DataFrame([{
-            'previous_clean': agent_text,
-            'current_clean': partial_transcript
+            'previous_utter_clean': agent_text,
+            'current_utter_clean': partial_transcript
         }])
         prediction = self.pipeline.predict(input)
         confidence = self.pipeline.predict_proba(input)[0][1]
+        return {
+            "is_backchannel": bool(prediction[0]),
+            "confidence": confidence
+        }
+
+
+class FastTextBackChannelModel:
+    def __init__(self, model_dir='weights'):
+        """
+        Initializes the FastText-based backchannel detection model.
+
+        Args:
+            model_dir (str): The directory containing the model files.
+        """
+        current_script_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        # Path to the scikit-learn pipeline file
+        pipeline_path = os.path.join(current_script_dir, model_dir, 'fasttext_model.joblib') # Use a generic name
+        
+        # Path to the FastText embedding model (.bin file)
+        fasttext_model_path = os.path.join(current_script_dir, model_dir, 'cc.en.300.bin')
+
+        if not os.path.exists(pipeline_path) or not os.path.exists(fasttext_model_path):
+            raise FileNotFoundError(
+                f"Model files not found. Ensure '{pipeline_path}' and "
+                f"'{fasttext_model_path}' exist."
+            )
+
+        print(f"Loading pipeline from {pipeline_path}...")
+        self.pipeline = joblib.load(pipeline_path)
+
+        # The pipeline was trained with a path to the .bin file, which might now be
+        # different. We must update it to the correct location for inference.
+        # The 'vectorizer' step name comes from the pipeline definition in train.py
+        print("Updating FastText model path in the pipeline...")
+        self.pipeline.named_steps['vectorizer'].model_path = fasttext_model_path
+    
+    
+    def predict(self, agent_text: str, partial_transcript: str) -> dict:
+        """
+        Uses the trained FastText model to predict if the partial transcript is a backchannel.
+        
+        Args:
+            agent_text (str): The text spoken by the agent (context).
+            partial_transcript (str): The current utterance to classify.
+        
+        Returns:
+            dict: A dictionary with 'is_backchannel' and 'confidence' keys.
+        """
+        # The FastText model was trained only on the current utterance, 
+        # but we keep the signature the same for consistency.
+        input_df = pd.DataFrame([{
+            'previous_utter_clean': agent_text,
+            'current_utter_clean': partial_transcript
+        }])
+        
+        # The pipeline will automatically select 'current_utter_clean'
+        prediction = self.pipeline.predict(input_df)
+        confidence = self.pipeline.predict_proba(input_df)[0][1]
+        
         return {
             "is_backchannel": bool(prediction[0]),
             "confidence": confidence

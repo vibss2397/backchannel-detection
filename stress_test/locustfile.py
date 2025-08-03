@@ -20,7 +20,12 @@ class BackchannelApiUser(HttpUser):
         payload = random.choice(self.sample_utterances)
         self.client.post("/baseline", json=payload)
 
-    @task(2) # This task will be picked 2 times out of 3
+    @task(1) # This task will be picked 1 times out of 3
     def predict_ml_model(self):
         payload = random.choice(self.sample_utterances)
-        self.client.post("/backchannelmodel", json=payload)
+        self.client.post("/tfidfmodel", json=payload)
+    
+    @task(1) # This task will be picked 1 times out of 3
+    def predict_fasttext_model(self):
+        payload = random.choice(self.sample_utterances)
+        self.client.post("/fasttextmodel", json=payload)

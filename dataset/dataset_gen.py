@@ -56,7 +56,10 @@ def create_backchannel_dataset(corpus, subset_size=None):
         print("Processing all conversations...")
         progress_total = len(corpus.get_conversation_ids())
 
+    total_added = 0
     for convo in tqdm(conversation_iterator, total=progress_total):
+        if total_added >= progress_total:
+            break
         try:
             # The rest of your processing logic remains the same
             all_utts = list(convo.iter_utterances(selector=lambda u: u.text != ''))
@@ -64,38 +67,38 @@ def create_backchannel_dataset(corpus, subset_size=None):
         except (ValueError, IndexError):
             continue
 
-        random_index = random.randint(1, len(utts) - 1)
-        current_utt = utts[random_index]
-        previous_utt = utts[random_index - 1]
+        for i in range(1, len(utts)):
+            current_utt = utts[i]
+            previous_utt = utts[i - 1]
+            if current_utt.speaker == previous_utt.speaker:
+                continue
 
-        if current_utt.speaker == previous_utt.speaker:
-            continue
+            tags_in_utterance = {segment[1] for segment in current_utt.meta.get('tag', [])}
+            
+            # 1. Filter First: Check for any excluded tags.
+            if any(tag in EXCLUDED_TAGS for tag in tags_in_utterance):
+                continue
 
-        tags_in_utterance = {segment[1] for segment in current_utt.meta.get('tag', [])}
-        
-        # 1. Filter First: Check for any excluded tags.
-        if any(tag in EXCLUDED_TAGS for tag in tags_in_utterance):
-            continue
+            # --- New "Safety-First" Labeling Logic ---
+            label = None
+            
+            # Rule 1: If ANY tag is clearly substantive, it is NOT a back-channel.
+            if any(tag in SUBSTANTIVE_TAGS for tag in tags_in_utterance):
+                label = 0
+            # Rule 2: If not substantive, check if it's a clear back-channel.
+            elif any(tag in BACKCHANNEL_TAGS for tag in tags_in_utterance):
+                label = 1
+            # Rule 3: If it's in the gray area (neither), default to NOT back-channel for safety.
+            else:
+                label = 0
 
-        # --- New "Safety-First" Labeling Logic ---
-        label = None
-        
-        # Rule 1: If ANY tag is clearly substantive, it is NOT a back-channel.
-        if any(tag in SUBSTANTIVE_TAGS for tag in tags_in_utterance):
-            label = 0
-        # Rule 2: If not substantive, check if it's a clear back-channel.
-        elif any(tag in BACKCHANNEL_TAGS for tag in tags_in_utterance):
-            label = 1
-        # Rule 3: If it's in the gray area (neither), default to NOT back-channel for safety.
-        else:
-            label = 0
-
-        data_points.append({
-            'scenario': 'Switchboard',
-            'previous_utterance': previous_utt.text,
-            'current_utterance': current_utt.text,
-            'label': label
-        })
+            total_added += 1
+            data_points.append({
+                'scenario': 'Switchboard',
+                'previous_utterance': previous_utt.text,
+                'current_utterance': current_utt.text,
+                'label': label
+            })
 
     print(f"\nProcessed {len(data_points)} valid data points from Switchboard.")
     return pd.DataFrame(data_points)
@@ -151,7 +154,7 @@ if __name__ == "__main__":
     print("Corpus loaded successfully.")
 
     # Process 1000 conversations from Switchboard
-    switchboard_df = create_backchannel_dataset(corpus, subset_size=1200)
+    switchboard_df = create_backchannel_dataset(corpus, subset_size=5000)
     
     # Error in creating switchboard df
     if switchboard_df.empty:
