@@ -4,7 +4,6 @@ import pandas as pd
 import string
 from itertools import islice
 from tqdm import tqdm
-import random
 
 def create_backchannel_dataset(corpus, subset_size=None):
     """
@@ -207,7 +206,7 @@ if __name__ == "__main__":
     print(f'Successfully created combined dataset: {output_path}')
     
     # Final statistics
-    print(f"\nFinal Dataset Statistics:")
+    print("\nFinal Dataset Statistics:")
     print(f"Total samples: {len(combined_df)}")
     print(f"Backchannels (label=1): {len(combined_df[combined_df['label'] == 1])}")
     print(f"Non-backchannels (label=0): {len(combined_df[combined_df['label'] == 0])}")

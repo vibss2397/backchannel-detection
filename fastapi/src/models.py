@@ -2,11 +2,24 @@ import re
 import joblib
 import pandas as pd
 import os
+import logging
 
-# Import the classes from src.models - this MUST match the training imports
-from sharedlib.transformer_utils import ImprovedFastTextVectorizer, ColumnSelector
+# --- Logging Configuration ---
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# --- Model Configuration ---
+def get_model_paths():
+    """Returns a dictionary of model paths."""
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    return {
+        'tfidf_model': os.path.join(current_dir, 'weights/trained_model.joblib'),
+        'fasttext_pipeline': os.path.join(current_dir, 'weights/fasttext_model.joblib'),
+        'fasttext_model': os.path.join(current_dir, 'weights/cc.en.300.bin'),
+    }
 
 class KeyWordBaselineModel:
+    """A baseline model that uses a keyword list to detect backchannels."""
     def __init__(self):
         self.backchannel_keywords = {
             "yeah", "yes", "uh-huh", "mhmm", "mm-hmm", "hmm",
@@ -23,10 +36,11 @@ class KeyWordBaselineModel:
     
     def predict(self, agent_text: str, partial_transcript: str) -> dict:
         """
-        Only uses the partial transcript to determine a backchannel. Agent text is not needed.
+        Predicts if the partial transcript is a backchannel based on keywords.
+        
         Args:
-            agent_text (str): The text spoken by the agent.
-            partial_transcript (str): The partial transcript of the conversation.
+            agent_text (str): The text spoken by the agent (context).
+            partial_transcript (str): The current utterance to classify.
         
         Returns:
             dict: A dictionary with 'is_backchannel' and 'confidence' keys.
@@ -44,69 +58,25 @@ class KeyWordBaselineModel:
 
 
 class BackChannelDetectionModel:
+    """A model that uses a trained TF-IDF pipeline to detect backchannels."""
     def __init__(self):
-        # Construct an absolute path to the weights file
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.weights = os.path.join(current_dir, 'weights/trained_model.joblib')
-        self.pipeline = joblib.load(self.weights)
-    
+        model_paths = get_model_paths()
+        self.weights = model_paths['tfidf_model']
+        
+        if not os.path.exists(self.weights):
+            logger.error(f"TF-IDF model file not found at {self.weights}")
+            raise FileNotFoundError(f"TF-IDF model file not found at {self.weights}")
+            
+        try:
+            self.pipeline = joblib.load(self.weights)
+            logger.info("TF-IDF model loaded successfully.")
+        except Exception as e:
+            logger.exception(f"Failed to load TF-IDF model: {e}")
+            raise
     
     def predict(self, agent_text: str, partial_transcript: str) -> dict:
         """
-        Uses the trained model to predict if the partial transcript is a backchannel.
-        Args:
-            agent_text (str): The text spoken by the agent.
-            partial_transcript (str): The partial transcript of the conversation.
-        Returns:
-            dict: A dictionary with 'is_backchannel' and 'confidence' keys.
-        """
-        input = pd.DataFrame([{
-            'previous_utter_clean': agent_text,
-            'current_utter_clean': partial_transcript
-        }])
-        prediction = self.pipeline.predict(input)
-        confidence = self.pipeline.predict_proba(input)[0][1]
-        return {
-            "is_backchannel": bool(prediction[0]),
-            "confidence": confidence
-        }
-
-
-class FastTextBackChannelModel:
-    def __init__(self, model_dir='weights'):
-        """
-        Initializes the FastText-based backchannel detection model.
-
-        Args:
-            model_dir (str): The directory containing the model files.
-        """
-        current_script_dir = os.path.dirname(os.path.abspath(__file__))
-        
-        # Path to the scikit-learn pipeline file
-        pipeline_path = os.path.join(current_script_dir, model_dir, 'fasttext_model.joblib') # Use a generic name
-        
-        # Path to the FastText embedding model (.bin file)
-        fasttext_model_path = os.path.join(current_script_dir, model_dir, 'cc.en.300.bin')
-
-        if not os.path.exists(pipeline_path) or not os.path.exists(fasttext_model_path):
-            raise FileNotFoundError(
-                f"Model files not found. Ensure '{pipeline_path}' and "
-                f"'{fasttext_model_path}' exist."
-            )
-
-        print(f"Loading pipeline from {pipeline_path}...")
-        self.pipeline = joblib.load(pipeline_path)
-
-        # The pipeline was trained with a path to the .bin file, which might now be
-        # different. We must update it to the correct location for inference.
-        # The 'vectorizer' step name comes from the pipeline definition in train.py
-        print("Updating FastText model path in the pipeline...")
-        self.pipeline.named_steps['vectorizer'].model_path = fasttext_model_path
-    
-    
-    def predict(self, agent_text: str, partial_transcript: str) -> dict:
-        """
-        Uses the trained FastText model to predict if the partial transcript is a backchannel.
+        Predicts if the partial transcript is a backchannel using the TF-IDF model.
         
         Args:
             agent_text (str): The text spoken by the agent (context).
@@ -115,18 +85,70 @@ class FastTextBackChannelModel:
         Returns:
             dict: A dictionary with 'is_backchannel' and 'confidence' keys.
         """
-        # The FastText model was trained only on the current utterance, 
-        # but we keep the signature the same for consistency.
         input_df = pd.DataFrame([{
             'previous_utter_clean': agent_text,
             'current_utter_clean': partial_transcript
         }])
         
-        # The pipeline will automatically select 'current_utter_clean'
-        prediction = self.pipeline.predict(input_df)
-        confidence = self.pipeline.predict_proba(input_df)[0][1]
+        try:
+            prediction = self.pipeline.predict(input_df)
+            confidence = self.pipeline.predict_proba(input_df)[0][1]
+            return {
+                "is_backchannel": bool(prediction[0]),
+                "confidence": confidence
+            }
+        except Exception as e:
+            logger.exception(f"An error occurred during TF-IDF prediction: {e}")
+            return {
+                "is_backchannel": False,
+                "confidence": 0.0
+            }
+
+class FastTextBackChannelModel:
+    """A model that uses a trained FastText pipeline to detect backchannels."""
+    def __init__(self):
+        model_paths = get_model_paths()
+        pipeline_path = model_paths['fasttext_pipeline']
+        fasttext_model_path = model_paths['fasttext_model']
+
+        if not os.path.exists(pipeline_path) or not os.path.exists(fasttext_model_path):
+            logger.error(f"FastText model files not found. Searched for {pipeline_path} and {fasttext_model_path}")
+            raise FileNotFoundError("FastText model files not found.")
+
+        try:
+            self.pipeline = joblib.load(pipeline_path)
+            self.pipeline.named_steps['vectorizer'].model_path = fasttext_model_path
+            logger.info("FastText model loaded and configured successfully.")
+        except Exception as e:
+            logger.exception(f"Failed to load or configure FastText model: {e}")
+            raise
+    
+    def predict(self, agent_text: str, partial_transcript: str) -> dict:
+        """
+        Predicts if the partial transcript is a backchannel using the FastText model.
         
-        return {
-            "is_backchannel": bool(prediction[0]),
-            "confidence": confidence
-        }
+        Args:
+            agent_text (str): The text spoken by the agent (context).
+            partial_transcript (str): The current utterance to classify.
+        
+        Returns:
+            dict: A dictionary with 'is_backchannel' and 'confidence' keys.
+        """
+        input_df = pd.DataFrame([{
+            'previous_utter_clean': agent_text,
+            'current_utter_clean': partial_transcript
+        }])
+        
+        try:
+            prediction = self.pipeline.predict(input_df)
+            confidence = self.pipeline.predict_proba(input_df)[0][1]
+            return {
+                "is_backchannel": bool(prediction[0]),
+                "confidence": confidence
+            }
+        except Exception as e:
+            logger.exception(f"An error occurred during FastText prediction: {e}")
+            return {
+                "is_backchannel": False,
+                "confidence": 0.0
+            }
