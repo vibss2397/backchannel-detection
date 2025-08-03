@@ -13,7 +13,7 @@ def get_model_paths():
     """Returns a dictionary of model paths."""
     current_dir = os.path.dirname(os.path.abspath(__file__))
     return {
-        'tfidf_model': os.path.join(current_dir, 'weights/trained_model.joblib'),
+        'tfidf_model': os.path.join(current_dir, 'weights/tfidf_model.joblib'),
         'fasttext_pipeline': os.path.join(current_dir, 'weights/fasttext_model.joblib'),
         'fasttext_model': os.path.join(current_dir, 'weights/cc.en.300.bin'),
     }
@@ -99,10 +99,7 @@ class BackChannelDetectionModel:
             }
         except Exception as e:
             logger.exception(f"An error occurred during TF-IDF prediction: {e}")
-            return {
-                "is_backchannel": False,
-                "confidence": 0.0
-            }
+            raise
 
 class FastTextBackChannelModel:
     """A model that uses a trained FastText pipeline to detect backchannels."""
@@ -148,7 +145,4 @@ class FastTextBackChannelModel:
             }
         except Exception as e:
             logger.exception(f"An error occurred during FastText prediction: {e}")
-            return {
-                "is_backchannel": False,
-                "confidence": 0.0
-            }
+            raise

@@ -2,8 +2,15 @@
 
 from locust import HttpUser, task, between
 import random
+import os
+
+# Get the target host from environment variables, with a default value
+# To set the host, run `export TARGET_HOST=http://your-host.com` in your terminal
+# or `TARGET_HOST=http://your-host.com locust -f stress_test/locustfile.py`
+TARGET_HOST = os.environ.get("TARGET_HOST", "http://localhost:80")
 
 class BackchannelApiUser(HttpUser):
+    host = TARGET_HOST
     # Wait 0.1 to 0.5 seconds between requests
     wait_time = between(0.1, 0.5)
 

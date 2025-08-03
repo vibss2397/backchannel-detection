@@ -88,6 +88,20 @@ def startup_event():
 def read_root():
     return {"message": f"Welcome to the {API_TITLE}"}
 
+@app.get("/health", tags=["General"])
+def health_check():
+    """
+    Health check endpoint to verify that the API and models are operational.
+    """
+    models_loaded = baseline_model is not None and tfidf_model is not None and fasttext_model is not None
+    if models_loaded:
+        return {"status": "ok", "models_loaded": True}
+    else:
+        return JSONResponse(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            content={"status": "error", "models_loaded": False, "detail": "One or more models failed to load."}
+        )
+
 @app.post("/baseline", response_model=OutputData, tags=["Models"])
 def run_inference_on_baseline(input: InputData) -> OutputData:
     """
