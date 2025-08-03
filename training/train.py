@@ -12,11 +12,10 @@ import gzip
 import shutil
 
 # Scikit-learn imports
-from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import cross_validate, train_test_split, StratifiedKFold
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, f1_score, average_precision_score
 
 # Plotting
@@ -29,6 +28,26 @@ from imblearn.over_sampling import RandomOverSampler
 from imblearn.under_sampling import RandomUnderSampler
 
 from sharedlib.transformer_utils import ImprovedFastTextVectorizer
+
+# --- Model and Training Configuration ---
+
+def get_model_config():
+    """Returns a dictionary containing model and training configurations."""
+    return {
+        'fasttext_model_path': 'cc.en.300.bin',
+        'fasttext_download_url': 'https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz',
+        'tfidf_feature_options': [500, 1000, 2500, 5000, 7500],
+        'regularization_options': [0.1, 0.5, 1.0, 2.0, 5.0],
+        'fasttext_combination_options': ['concat', 'separate', 'average', 'current_only'],
+        'sampling_strategies': ['none', 'oversample', 'undersample'],
+        'test_size': 0.2,
+        'validation_size': 0.25,
+        'random_state': 42,
+        'log_reg_solver': 'liblinear',
+        'log_reg_max_iter': 2000,
+        'benchmark_runs': 1000,
+        'latency_threshold_ms': 50,
+    }
 
 # --- Custom Classes for Pipelines ---
 
@@ -72,13 +91,13 @@ class KeywordBaseline:
 
 # --- Utility and Evaluation Functions ---
 
-def download_fasttext_model(model_path="cc.en.300.bin"):
+def download_fasttext_model(model_path, config):
     """Downloads the pre-trained FastText model if it doesn't exist."""
     if os.path.exists(model_path):
         print(f"FastText model '{model_path}' already exists.")
         return model_path
 
-    url = "https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz"
+    url = config['fasttext_download_url']
     gz_path = model_path + ".gz"
     
     print(f"Downloading FastText model from {url}...")
@@ -142,8 +161,9 @@ def plot_confusion_matrix(y_true, y_pred, model_name, save_path):
     plt.close()
 
 
-def benchmark_inference_speed(model, X_sample, n_runs=1000):
+def benchmark_inference_speed(model, X_sample, config):
     """Benchmark model inference speed."""
+    n_runs = config['benchmark_runs']
     print(f"Benchmarking inference speed with {n_runs} runs...")
     
     # Warm up
@@ -162,16 +182,16 @@ def benchmark_inference_speed(model, X_sample, n_runs=1000):
     
     print(f"Average inference time: {avg_time:.2f}ms")
     print(f"95th percentile: {p95_time:.2f}ms")
-    print(f"Target: <50ms - {'✅ PASS' if p95_time < 50 else '❌ FAIL'}")
+    print(f"Target: <{config['latency_threshold_ms']}ms - {'✅ PASS' if p95_time < config['latency_threshold_ms'] else '❌ FAIL'}")
     
     return {'avg_ms': avg_time, 'p95_ms': p95_time}
 
 
 # --- TF-IDF Model Building Functions ---
-def find_best_max_features(X_train, y_train, X_val, y_val, sampling_strategy):
+def find_best_max_features(X_train, y_train, X_val, y_val, sampling_strategy, config):
     """Tests different max_features values for the TF-IDF model."""
-    feature_options = [500, 1000, 2500, 5000, 7500]
-    regularization_options = [0.1, 0.5, 1.0, 2.0, 5.0]
+    feature_options = config['tfidf_feature_options']
+    regularization_options = config['regularization_options']
     results = []
 
     print("\n--- Finding optimal max_features for TF-IDF model ---")
@@ -179,12 +199,13 @@ def find_best_max_features(X_train, y_train, X_val, y_val, sampling_strategy):
     print("-" * 40)
 
     for n_features in feature_options:
-        for  reg in regularization_options:
+        for reg in regularization_options:
             pipeline = build_tfidf_pipeline_with_params(
                 prev_max_features=n_features,
                 curr_max_features=n_features,
                 sampling_strategy=sampling_strategy,
-                C=reg  # Default regularization
+                C=reg,
+                config=config
             )
             pipeline.fit(X_train, y_train)
             y_val_pred = pipeline.predict(X_val)
@@ -200,7 +221,7 @@ def find_best_max_features(X_train, y_train, X_val, y_val, sampling_strategy):
     return best_result['max_features'], best_result['C']
 
 
-def build_tfidf_pipeline_with_params(prev_max_features=500, curr_max_features=500, sampling_strategy='none', C=1.0) -> ImbPipeline:
+def build_tfidf_pipeline_with_params(prev_max_features, curr_max_features, sampling_strategy, C, config) -> ImbPipeline:
     """Builds the TF-IDF pipeline."""
     preprocessor = ColumnTransformer(
         transformers=[
@@ -213,26 +234,26 @@ def build_tfidf_pipeline_with_params(prev_max_features=500, curr_max_features=50
     steps = [('preprocessor', preprocessor)]
 
     if sampling_strategy == 'oversample':
-        steps.append(('sampler', RandomOverSampler(random_state=42)))
+        steps.append(('sampler', RandomOverSampler(random_state=config['random_state'])))
     elif sampling_strategy == 'undersample':
-        steps.append(('sampler', RandomUnderSampler(random_state=42)))
+        steps.append(('sampler', RandomUnderSampler(random_state=config['random_state'])))
         
     steps.append(('classifier', LogisticRegression(
-        random_state=42, 
-        solver='liblinear', 
-        max_iter=2000,  # Increased for convergence
-        C=C,  # Tunable regularization
-        class_weight='balanced'  # Handle class imbalance like TF-IDF should
+        random_state=config['random_state'], 
+        solver=config['log_reg_solver'], 
+        max_iter=config['log_reg_max_iter'],
+        C=C,
+        class_weight='balanced'
     )))
     
     return ImbPipeline(steps)
 
 
 # --- FastText Model Building Functions ---
-def find_best_fasttext_config(X_train, y_train, X_val, y_val, model_path, sampling_strategy):
+def find_best_fasttext_config(X_train, y_train, X_val, y_val, model_path, sampling_strategy, config):
     """Find optimal FastText configuration with fair comparison to TF-IDF."""
-    combination_options = ['concat', 'separate', 'average', 'current_only']
-    regularization_options = [0.1, 0.5, 1.0, 2.0, 5.0]
+    combination_options = config['fasttext_combination_options']
+    regularization_options = config['regularization_options']
     results = []
 
     print("\n--- Finding optimal FastText configuration ---")
@@ -246,14 +267,14 @@ def find_best_fasttext_config(X_train, y_train, X_val, y_val, model_path, sampli
                     model_path=model_path,
                     combination_method=combination,
                     C=C_val,
-                    sampling_strategy=sampling_strategy
+                    sampling_strategy=sampling_strategy,
+                    config=config
                 )
                 
                 pipeline.fit(X_train, y_train)
                 y_val_pred = pipeline.predict(X_val)
                 val_f1 = f1_score(y_val, y_val_pred, average='binary')
                 
-                # Add notes about fairness
                 notes = ""
                 if combination == 'current_only':
                     notes = "UNFAIR (curr only)"
@@ -286,21 +307,21 @@ def find_best_fasttext_config(X_train, y_train, X_val, y_val, model_path, sampli
         return 'concat', 1.0
 
 
-def build_fasttext_pipeline_with_params(model_path, combination_method='concat', C=1.0, sampling_strategy='none'):
+def build_fasttext_pipeline_with_params(model_path, combination_method, C, sampling_strategy, config):
     """Build FastText pipeline with proper configuration and fair comparison."""
     steps = [('vectorizer', ImprovedFastTextVectorizer(model_path=model_path, combination_method=combination_method))]
     
     if sampling_strategy == 'oversample':
-        steps.append(('sampler', RandomOverSampler(random_state=42)))
+        steps.append(('sampler', RandomOverSampler(random_state=config['random_state'])))
     elif sampling_strategy == 'undersample':
-        steps.append(('sampler', RandomUnderSampler(random_state=42)))
+        steps.append(('sampler', RandomUnderSampler(random_state=config['random_state'])))
     
     steps.append(('classifier', LogisticRegression(
-        random_state=42, 
-        solver='liblinear', 
-        max_iter=2000,  # Increased for convergence
-        C=C,  # Tunable regularization
-        class_weight='balanced'  # Handle class imbalance like TF-IDF should
+        random_state=config['random_state'], 
+        solver=config['log_reg_solver'], 
+        max_iter=config['log_reg_max_iter'],
+        C=C,
+        class_weight='balanced'
     )))
     
     return ImbPipeline(steps)
@@ -308,16 +329,27 @@ def build_fasttext_pipeline_with_params(model_path, combination_method='concat',
 
 # --- Main Training Workflow ---
 def main(args):
-    os.makedirs(args.output_dir, exist_ok=True)
-    
-    print(f"Loading training data from {args.training_file}...")
+    """
+    Main function to run the training and evaluation pipeline.
+
+    Args:
+        args (argparse.Namespace): Command-line arguments for training configuration.
+    """
     try:
+        os.makedirs(args.output_dir, exist_ok=True)
+        
+        print(f"Loading training data from {args.training_file}...")
         df = pd.read_csv(args.training_file)
     except FileNotFoundError:
         print(f"Error: Training file not found at {args.training_file}")
         return
+    except Exception as e:
+        print(f"An unexpected error occurred during setup: {e}")
+        return
 
     df[['previous_utter_clean', 'current_utter_clean']] = df[['previous_utter_clean', 'current_utter_clean']].fillna('')
+    
+    config = get_model_config()
     
     print(f"Dataset loaded: {len(df)} samples")
     print(f"Class distribution: {df['label'].value_counts().to_dict()}")
@@ -325,9 +357,9 @@ def main(args):
     X = df[['previous_utter_clean', 'current_utter_clean']]
     y = df['label']
     
-    print("\nSplitting data into train/val/test (60/20/20)...")
-    X_temp, X_test, y_temp, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-    X_train, X_val, y_train, y_val = train_test_split(X_temp, y_temp, test_size=0.25, random_state=42, stratify=y_temp)
+    print(f"\nSplitting data into train/val/test ({1 - config['test_size']:.0%}/{config['test_size'] * config['validation_size']:.0%}/{config['test_size'] * (1-config['validation_size']):.0%})...")
+    X_temp, X_test, y_temp, y_test = train_test_split(X, y, test_size=config['test_size'], random_state=config['random_state'], stratify=y)
+    X_train, X_val, y_train, y_val = train_test_split(X_temp, y_temp, test_size=config['validation_size'], random_state=config['random_state'], stratify=y_temp)
     print(f"Train: {len(X_train)}, Val: {len(X_val)}, Test: {len(X_test)}")
     
     # === MODEL 1: BASELINE ===
@@ -342,8 +374,8 @@ def main(args):
     print("\n" + "="*50)
     print("MODEL 2: TRAINING TF-IDF + LOGISTIC REGRESSION")
     print("="*50)
-    optimal_features, optimal_C = find_best_max_features(X_train, y_train, X_val, y_val, args.sampling)
-    final_tfidf_pipeline = build_tfidf_pipeline_with_params(optimal_features, optimal_features, args.sampling, optimal_C)
+    optimal_features, optimal_C = find_best_max_features(X_train, y_train, X_val, y_val, args.sampling, config)
+    final_tfidf_pipeline = build_tfidf_pipeline_with_params(optimal_features, optimal_features, args.sampling, optimal_C, config)
     
     print("\nTraining final TF-IDF model on full training set...")
     final_tfidf_pipeline.fit(X_train, y_train)
@@ -356,7 +388,7 @@ def main(args):
     print("MODEL 3: TRAINING IMPROVED FASTTEXT + LOGISTIC REGRESSION")
     print("="*50)
     
-    ft_model_path = download_fasttext_model(os.path.join(args.output_dir, 'cc.en.300.bin'))
+    ft_model_path = download_fasttext_model(os.path.join(args.output_dir, config['fasttext_model_path']), config)
     if not ft_model_path:
         print("Could not obtain FastText model. Skipping FastText evaluation.")
         fasttext_results = None
@@ -365,7 +397,7 @@ def main(args):
     else:
         # Find optimal FastText configuration
         optimal_combination, optimal_C = find_best_fasttext_config(
-            X_train, y_train, X_val, y_val, ft_model_path, args.sampling
+            X_train, y_train, X_val, y_val, ft_model_path, args.sampling, config
         )
         
         # Build final pipeline with optimal parameters
@@ -373,7 +405,8 @@ def main(args):
             model_path=ft_model_path,
             combination_method=optimal_combination,
             C=optimal_C,
-            sampling_strategy=args.sampling
+            sampling_strategy=args.sampling,
+            config=config
         )
         
         print(f"\nTraining final FastText model with {optimal_combination} + C={optimal_C}...")
@@ -392,14 +425,14 @@ def main(args):
     })
     
     print("\nBaseline speed:")
-    baseline_speed = benchmark_inference_speed(baseline, sample_data)
+    baseline_speed = benchmark_inference_speed(baseline, sample_data, config)
     
     print("\nTF-IDF Model speed:")
-    tfidf_speed = benchmark_inference_speed(final_tfidf_pipeline, sample_data)
+    tfidf_speed = benchmark_inference_speed(final_tfidf_pipeline, sample_data, config)
 
     if fasttext_results:
         print("\nImproved FastText Model speed:")
-        fasttext_speed = benchmark_inference_speed(final_fasttext_pipeline, sample_data)
+        fasttext_speed = benchmark_inference_speed(final_fasttext_pipeline, sample_data, config)
     
     # === MODEL COMPARISON ===
     print(f"\n{'='*80}")
@@ -473,15 +506,15 @@ def main(args):
 
         f.write("LATENCY REQUIREMENTS\n")
         f.write("-" * 20 + "\n")
-        f.write(f"Target: <50ms\n")
+        f.write("Target: <50ms\n")
         f.write(f"Baseline: {'✅ PASS' if baseline_speed['p95_ms'] < 50 else '❌ FAIL'}\n")
         f.write(f"TF-IDF Model: {'✅ PASS' if tfidf_speed['p95_ms'] < 50 else '❌ FAIL'}\n")
         if fasttext_results:
             f.write(f"Improved FastText Model: {'✅ PASS' if fasttext_speed['p95_ms'] < 50 else '❌ FAIL'}\n")
 
     print(f"\nModels and reports saved in '{args.output_dir}'")
-    print(f"\nImproved training completed successfully! 🎉")
-    print(f"\nNow FastText gets a FAIR comparison with both utterances and hyperparameter tuning!")
+    print("\nImproved training completed successfully! 🎉")
+    print("\nNow FastText gets a FAIR comparison with both utterances and hyperparameter tuning!")
 
 
 if __name__ == '__main__':

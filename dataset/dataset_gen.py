@@ -4,7 +4,6 @@ import pandas as pd
 import string
 from itertools import islice
 from tqdm import tqdm
-import random
 
 def create_backchannel_dataset(corpus, subset_size=None):
     """
@@ -162,10 +161,10 @@ if __name__ == "__main__":
         exit(0)
 
     # Load synthetic data (update this path to your CSV file)
-    synthetic_claude_csv_path = "synthetic_dataset_claude.csv"  # Update this path
+    synthetic_claude_csv_path = "dataset/synthetic_dataset_claude.csv"  # Update this path
     synthetic_claude_df = load_synthetic_data(synthetic_claude_csv_path)
 
-    synthetic_gemini_csv_path = "synthetic_dataset_gemini.csv"  # Update this path
+    synthetic_gemini_csv_path = "dataset/synthetic_dataset_gemini.csv"  # Update this path
     synthetic_gemini_df = load_synthetic_data(synthetic_gemini_csv_path)
 
     # Combine datasets
@@ -202,12 +201,12 @@ if __name__ == "__main__":
     combined_df['current_utter_clean'] = combined_df['current_utterance'].map(lambda x: clean_dataset_text(x))
 
     # Save final dataset
-    output_path = 'backchannel_dataset_cleaned.csv'
+    output_path = 'dataset/backchannel_dataset_cleaned.csv'
     combined_df.to_csv(output_path, index=False)
     print(f'Successfully created combined dataset: {output_path}')
     
     # Final statistics
-    print(f"\nFinal Dataset Statistics:")
+    print("\nFinal Dataset Statistics:")
     print(f"Total samples: {len(combined_df)}")
     print(f"Backchannels (label=1): {len(combined_df[combined_df['label'] == 1])}")
     print(f"Non-backchannels (label=0): {len(combined_df[combined_df['label'] == 0])}")

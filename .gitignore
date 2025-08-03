@@ -126,3 +126,6 @@ dmypy.json
 
 # Add output directory and any file inside of it (weights, logs, etc.)
 output/
+fastapi/src/weights/
+# Add dataset files
+dataset/backchannel_dataset_cleaned.csv
