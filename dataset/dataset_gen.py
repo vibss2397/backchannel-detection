@@ -1,6 +1,10 @@
 from convokit import Corpus, download
 import re
 import pandas as pd
+import string
+from itertools import islice
+from tqdm import tqdm
+import random
 
 def create_backchannel_dataset(corpus, subset_size=None):
     """
@@ -14,7 +18,7 @@ def create_backchannel_dataset(corpus, subset_size=None):
 
     Returns:
         pandas.DataFrame: A DataFrame with columns 
-                          ['previous_utterance', 'current_utterance', 'label'].
+                          ['scenario', 'previous_utterance', 'current_utterance', 'label'].
     """
 
     # Pure Backchannels
@@ -42,58 +46,61 @@ def create_backchannel_dataset(corpus, subset_size=None):
     data_points = []
     
     conversation_iterator = corpus.iter_conversations()
-    total_conversations = len(corpus.get_conversation_ids())
-
+    
     if subset_size is not None and subset_size > 0:
         print(f"Processing a subset of {subset_size} conversations...")
+        # Use islice to take a subset of conversations
         conversation_iterator = islice(conversation_iterator, subset_size)
-        total_conversations = subset_size
+        progress_total = subset_size
     else:
         print("Processing all conversations...")
+        progress_total = len(corpus.get_conversation_ids())
 
-    for convo in tqdm(conversation_iterator, total=total_conversations):
+    for convo in tqdm(conversation_iterator, total=progress_total):
         try:
+            # The rest of your processing logic remains the same
             all_utts = list(convo.iter_utterances(selector=lambda u: u.text != ''))
             utts = sorted(all_utts, key=lambda u: int(u.id.split('-')[-1]))
         except (ValueError, IndexError):
             continue
 
-        for i in range(1, len(utts)):
-            current_utt = utts[i]
-            previous_utt = utts[i-1]
+        random_index = random.randint(1, len(utts) - 1)
+        current_utt = utts[random_index]
+        previous_utt = utts[random_index - 1]
 
-            if current_utt.speaker == previous_utt.speaker:
-                continue
+        if current_utt.speaker == previous_utt.speaker:
+            continue
 
-            tags_in_utterance = {segment[1] for segment in current_utt.meta.get('tag', [])}
-            
-            # 1. Filter First: Check for any excluded tags.
-            if any(tag in EXCLUDED_TAGS for tag in tags_in_utterance):
-                continue
+        tags_in_utterance = {segment[1] for segment in current_utt.meta.get('tag', [])}
+        
+        # 1. Filter First: Check for any excluded tags.
+        if any(tag in EXCLUDED_TAGS for tag in tags_in_utterance):
+            continue
 
-            # --- New "Safety-First" Labeling Logic ---
-            label = None
-            
-            # Rule 1: If ANY tag is clearly substantive, it is NOT a back-channel.
-            if any(tag in SUBSTANTIVE_TAGS for tag in tags_in_utterance):
-                label = 0
-            # Rule 2: If not substantive, check if it's a clear back-channel.
-            elif any(tag in BACKCHANNEL_TAGS for tag in tags_in_utterance):
-                label = 1
-            # Rule 3: If it's in the gray area (neither), default to NOT back-channel for safety.
-            else:
-                label = 0
+        # --- New "Safety-First" Labeling Logic ---
+        label = None
+        
+        # Rule 1: If ANY tag is clearly substantive, it is NOT a back-channel.
+        if any(tag in SUBSTANTIVE_TAGS for tag in tags_in_utterance):
+            label = 0
+        # Rule 2: If not substantive, check if it's a clear back-channel.
+        elif any(tag in BACKCHANNEL_TAGS for tag in tags_in_utterance):
+            label = 1
+        # Rule 3: If it's in the gray area (neither), default to NOT back-channel for safety.
+        else:
+            label = 0
 
-            data_points.append({
-                'previous_utterance': previous_utt.text,
-                'current_utterance': current_utt.text,
-                'label': label
-            })
+        data_points.append({
+            'scenario': 'Switchboard',
+            'previous_utterance': previous_utt.text,
+            'current_utterance': current_utt.text,
+            'label': label
+        })
 
-    print(f"\nProcessed {len(data_points)} valid data points.")
+    print(f"\nProcessed {len(data_points)} valid data points from Switchboard.")
     return pd.DataFrame(data_points)
 
-def clean_switchboard_text(text):
+def clean_dataset_text(text):
     """
     Cleans and normalizes text from the Switchboard corpus.
     """
@@ -112,8 +119,27 @@ def clean_switchboard_text(text):
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
+def load_synthetic_data(csv_file_path):
+    """
+    Load and process the synthetic backchannel data.
+    
+    Args:
+        csv_file_path (str): Path to the synthetic data CSV file
+        
+    Returns:
+        pandas.DataFrame: Processed synthetic data
+    """
+    print(f"Loading synthetic data from {csv_file_path}...")
+    try:
+        synthetic_df = pd.read_csv(csv_file_path)
+        print(f"Loaded {len(synthetic_df)} synthetic data points.")
+        return synthetic_df
+    except Exception as e:
+        print(f"Failed to load synthetic data: {e}")
+        return pd.DataFrame()
 
 if __name__ == "__main__":
+    # Load Switchboard data
     print("Loading Switchboard corpus...")
     try:
         # Download corpus (this might take a few minutes)
@@ -124,27 +150,62 @@ if __name__ == "__main__":
         exit(0)
     print("Corpus loaded successfully.")
 
-    df = create_backchannel_dataset(corpus)
-    # Error in creating df
-    if not df or df.empty:
-        print('DF could not be processed, check logs...')
+    # Process 1000 conversations from Switchboard
+    switchboard_df = create_backchannel_dataset(corpus, subset_size=1200)
+    
+    # Error in creating switchboard df
+    if switchboard_df.empty:
+        print('Switchboard DF could not be processed, check logs...')
         exit(0)
 
+    # Load synthetic data (update this path to your CSV file)
+    synthetic_claude_csv_path = "synthetic_dataset_claude.csv"  # Update this path
+    synthetic_claude_df = load_synthetic_data(synthetic_claude_csv_path)
+
+    synthetic_gemini_csv_path = "synthetic_dataset_gemini.csv"  # Update this path
+    synthetic_gemini_df = load_synthetic_data(synthetic_gemini_csv_path)
+
+    # Combine datasets
+    all_datasets = [switchboard_df]
+    if not synthetic_claude_df.empty:
+        print(f"Combining {len(switchboard_df)} Switchboard samples with {len(synthetic_claude_df)} synthetic samples...")
+        all_datasets.append(synthetic_claude_df)
+    if not synthetic_gemini_df.empty:
+        print(f"Combining {len(switchboard_df)} Switchboard samples with {len(synthetic_gemini_df)} synthetic Gemini samples...")
+        all_datasets.append(synthetic_gemini_df)
+    if len(all_datasets) == len(switchboard_df):
+        print("No synthetic data to combine, only Switchboard data will be used.")
+    combined_df = pd.concat(all_datasets, ignore_index=True)
+
     print("\n--- Dataset Creation Complete ---")
-    print(f"Total samples created: {len(df)}")
+    print(f"Total samples created: {len(combined_df)}")
+
+    # Show dataset composition
+    print("\nDataset Composition by Scenario:")
+    print(combined_df['scenario'].value_counts())
 
     print("\nLabel Distribution:")
-    print(df['label'].value_counts(normalize=True))
+    print(combined_df['label'].value_counts(normalize=True))
 
     print("\n--- Sample Data Points ---")
     print("\nExamples of Back-channels (Label = 1):")
-    print(df[df['label'] == 1].head())
+    print(combined_df[combined_df['label'] == 1].head())
     print("\nExamples of Normal Utterances (Label = 0):")
-    print(df[df['label'] == 0].head())
+    print(combined_df[combined_df['label'] == 0].head())
     
-    df['previous_utter_clean'] = df['previous_utterance'].map(lambda x: clean_switchboard_text(x))
-    df['current_utter_clean'] = df['current_utterance'].map(lambda x: clean_switchboard_text(x))
+    # Apply cleaning to all text
+    print("\nCleaning text data...")
+    combined_df['previous_utter_clean'] = combined_df['previous_utterance'].map(lambda x: clean_dataset_text(x))
+    combined_df['current_utter_clean'] = combined_df['current_utterance'].map(lambda x: clean_dataset_text(x))
 
-    df.to_csv('dataset.csv')
-    print('successfully created dataset.')
-
+    # Save final dataset
+    output_path = 'backchannel_dataset_cleaned.csv'
+    combined_df.to_csv(output_path, index=False)
+    print(f'Successfully created combined dataset: {output_path}')
+    
+    # Final statistics
+    print(f"\nFinal Dataset Statistics:")
+    print(f"Total samples: {len(combined_df)}")
+    print(f"Backchannels (label=1): {len(combined_df[combined_df['label'] == 1])}")
+    print(f"Non-backchannels (label=0): {len(combined_df[combined_df['label'] == 0])}")
+    print(f"Balance ratio: {combined_df['label'].mean():.3f}")

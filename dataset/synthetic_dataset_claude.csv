@@ -1,0 +1,541 @@
+scenario,previous_utterance,current_utterance,label
+Discord Friend Group,"Dude I just died in the stupidest way possible - walked right off the edge while checking my inventory",yeah,1
+Discord Friend Group,"I'm so done with this professor's assignments they're literally impossible to finish in time",yeah but you said the same thing last semester and got an A,0
+Discord Friend Group,"My mom's making me do chores all weekend instead of hanging out with you guys",uh-huh,1
+Discord Friend Group,"I think we should all meet up at the mall tomorrow and then catch that new movie",uh-huh what time were you thinking,0
+Discord Friend Group,"I can't believe Sarah and Jake broke up after dating for like three years",mhmm,1
+Discord Friend Group,"The party last night was absolutely insane - did you see when Mike tried to do that backflip?",mhmm and he totally face-planted into the couch,0
+Discord Friend Group,"I've been binge-watching this show all week and I'm already on season 4",oh,1
+Discord Friend Group,"My car broke down again and now I need to find a ride to work every day",oh you should ask your neighbor if you can carpool,0
+Discord Friend Group,"That test completely destroyed me - I studied for like 10 hours and still blanked out",wow,1
+Discord Friend Group,"I just got accepted into my dream college and I'm literally shaking right now!",wow that's incredible when do you start,0
+Discord Friend Group,"My little brother keeps stealing my snacks and eating them before I get home from school",right,1
+Discord Friend Group,"We should all definitely go to that concert next month if we can get tickets",right but aren't they like super expensive,0
+Discord Friend Group,"I'm thinking about getting a part-time job at that new coffee shop downtown",okay,1
+Discord Friend Group,"My parents said I can use their car this weekend if I clean the whole house",okay so basically you're gonna be our designated driver,0
+Discord Friend Group,"The weather's been so nice lately I just want to spend all day outside",ok,1
+Discord Friend Group,"I heard there's gonna be a huge storm this weekend and classes might get cancelled",ok hopefully it hits on Monday too,0
+Discord Friend Group,"I finally beat that boss we've been stuck on for the past three days",sure,1
+Discord Friend Group,"We could all chip in for pizza and have a gaming marathon tonight at my place",sure but I call dibs on picking the first game,0
+Discord Friend Group,"My sister's been borrowing my clothes without asking and it's driving me crazy",alright,1
+Discord Friend Group,"I need someone to cover my shift at work tomorrow because I have a doctor's appointment",alright I can probably do it if you return the favor next week,0
+Discord Friend Group,"I just got the new game everyone's been talking about and it's actually pretty fun",sweet,1
+Discord Friend Group,"The cafeteria food today was surprisingly good for once",sweet they finally hired a decent cook,0
+Discord Friend Group,"I managed to get us all tickets to the basketball game this Friday night",awesome,1
+Discord Friend Group,"My dad said he'll teach me how to drive stick shift this summer",awesome you'll finally be able to drive my car,0
+Discord Friend Group,"I aced my chemistry exam even though I was sure I completely failed it",perfect,1
+Discord Friend Group,"The new season of our favorite show just dropped on Netflix today",perfect we should have a watch party this weekend,0
+Discord Friend Group,"I can't believe how much drama there is in our friend group lately",exactly,1
+Discord Friend Group,"Social media is just making everyone more anxious and comparison-obsessed",exactly that's why I deleted Instagram last month,0
+Discord Friend Group,"That movie we watched last night had the most predictable plot twist ever",absolutely,1
+Discord Friend Group,"Pizza is definitely the superior food choice for any group hangout session",absolutely and pineapple belongs on it fight me,0
+Discord Friend Group,"I'm gonna be offline for a few hours while I help my mom with some stuff",gotcha,1
+Discord Friend Group,"Can everyone be online around 8 PM so we can all play together?",gotcha but I might be a few minutes late,0
+Discord Friend Group,"My grandma's visiting this week and she keeps asking about all my online friends",hmm,1
+Discord Friend Group,"I wonder if we'll all still be friends after we graduate and go to different colleges",hmm that's actually kind of scary to think about,0
+Discord Friend Group,"I just realized I've been pronouncing that word wrong my entire life",yep,1
+Discord Friend Group,"The homework for tomorrow is due at midnight and I haven't even started yet",yep you're definitely pulling an all-nighter,0
+Discord Friend Group,"My dog keeps trying to sit on my lap while I'm trying to game",great,1
+Discord Friend Group,"I just found out my crush is dating someone else and I'm pretty bummed about it",great timing to focus on yourself though,0
+Discord Friend Group,"Anyone want to hop on voice chat and just talk while we play some casual games?",yo,1
+Discord Friend Group,"I'm so bored right now and there's literally nothing good on TV",yo we should start that new co-op game we bought,0
+TikTok Live Stream,"Hey everyone! We're about to try this viral dance challenge that's been all over my FYP",yeah,1
+TikTok Live Stream,"I've been practicing this choreography for weeks and I'm finally ready to perform it",yeah but you should add that spin move everyone's doing,0
+TikTok Live Stream,"Thank you so much for the gift! You guys are literally the best audience ever",yes,1
+TikTok Live Stream,"Should I do the makeup transformation or the outfit change challenge next?",yes definitely do the glow-up transformation,0
+TikTok Live Stream,"I can't believe we already have 500 people watching! This is insane for me",uh-huh,1
+TikTok Live Stream,"The algorithm has been so weird lately - my videos aren't getting any reach",uh-huh you should try posting at different times,0
+TikTok Live Stream,"I'm thinking about dyeing my hair a completely different color for my next video series",mhmm,1
+TikTok Live Stream,"This trend is literally everywhere on social media but I still don't understand it",mhmm it's basically just people showing their glow-ups,0
+TikTok Live Stream,"OMG did you see that celebrity just joined the live? I'm literally shaking right now!",oh,1
+TikTok Live Stream,"My phone battery is getting low so this stream might cut out soon",oh you should get a portable charger for future streams,0
+TikTok Live Stream,"I just hit 10K followers yesterday and I'm still processing that this is real",wow,1
+TikTok Live Stream,"The comment section is moving so fast I can barely keep up with everyone",wow maybe turn on slow mode so it's easier to read,0
+TikTok Live Stream,"This song has been stuck in my head all week and now I want to choreograph to it",right,1
+TikTok Live Stream,"Everyone's asking me to collab with other creators but I'm too nervous to reach out",right but most creators are super friendly just send a DM,0
+TikTok Live Stream,"I'm about to attempt this really difficult transition that I've never done live before",okay,1
+TikTok Live Stream,"Should we do a Q&A session or keep doing dance challenges?",okay let's do Q&A first then more dancing,0
+TikTok Live Stream,"This lighting setup took me forever but I think it makes such a difference for content",ok,1
+TikTok Live Stream,"I'm running out of ideas for new content and need some inspiration from you guys",ok what about trying some comedy skits,0
+TikTok Live Stream,"My little sister keeps trying to get into frame and it's actually kind of adorable",sure,1
+TikTok Live Stream,"We should definitely do a duet challenge where everyone posts their version",sure but make sure to use the hashtag so I can find them,0
+TikTok Live Stream,"The sound quality isn't great today because my good mic is charging",alright,1
+TikTok Live Stream,"I want to do more educational content mixed in with the fun dance stuff",alright that's actually a really good way to diversify your content,0
+TikTok Live Stream,"This outfit is perfect for the aesthetic I'm going for in today's content",sweet,1
+TikTok Live Stream,"I just learned this new transition trick and it's going to level up my videos",sweet you should make a tutorial showing how to do it,0
+TikTok Live Stream,"We just reached 1000 viewers! Let's celebrate with my favorite dance routine",awesome,1
+TikTok Live Stream,"I love how supportive this community is compared to other social media platforms",awesome you should pin a comment about spreading positivity,0
+TikTok Live Stream,"This challenge is way harder than it looks - I've messed up like five times already",perfect,1
+TikTok Live Stream,"I think I'm getting the hang of this new editing style everyone's using",perfect practice makes perfect just keep experimenting,0
+TikTok Live Stream,"The way this filter makes my eyes look is absolutely magical",exactly,1
+TikTok Live Stream,"Social media trends change so fast it's hard to keep up with what's popular",exactly that's why consistency matters more than chasing every trend,0
+TikTok Live Stream,"This song is about to be the next big thing - I can feel it",absolutely,1
+TikTok Live Stream,"I think authenticity is what really matters most for building a genuine following",absolutely and your personality really shines through in your content,0
+TikTok Live Stream,"Thanks for watching today's stream! Don't forget to follow for more content",gotcha,1
+TikTok Live Stream,"Make sure to check out my latest video if you missed it earlier",gotcha will you be going live again tomorrow,0
+TikTok Live Stream,"This trend seems kind of problematic but everyone else is doing it",hmm,1
+TikTok Live Stream,"I wonder if I should start a YouTube channel too or just focus on TikTok",hmm YouTube might be good for longer form content,0
+TikTok Live Stream,"I just posted a new video right before going live and it's already getting views",great,1
+TikTok Live Stream,"The comments are so sweet today - you all know how to make someone smile",great your positive energy always attracts good vibes,0
+TikTok Live Stream,"Hey besties! Ready for another chaotic live stream with your girl?",hey,1
+TikTok Live Stream,"Welcome to all the new followers! So excited to have you join our little family",hey make sure to turn on notifications so you don't miss anything,0
+Reddit Voice Chat,"The data clearly shows that renewable energy adoption has increased by 40% in the past five years",yeah,1
+Reddit Voice Chat,"I think we need to consider the economic implications before jumping to conclusions about policy changes",yeah but we also can't ignore the environmental urgency of the situation,0
+Reddit Voice Chat,"This study from MIT provides compelling evidence about the effectiveness of remote work arrangements",yes,1
+Reddit Voice Chat,"The housing market trends we're seeing are unprecedented in the last two decades",yes and it's particularly affecting first-time homebuyers in urban areas,0
+Reddit Voice Chat,"According to the latest research from Stanford University the results are quite significant",uh-huh,1
+Reddit Voice Chat,"I've been following this topic for months and the patterns are becoming clearer",uh-huh so what do you think the next major development will be,0
+Reddit Voice Chat,"The peer-reviewed literature suggests a strong correlation between these two variables",mhmm,1
+Reddit Voice Chat,"This technology has the potential to revolutionize how we approach problem-solving",mhmm and the implications for accessibility are particularly interesting,0
+Reddit Voice Chat,"The statistical analysis reveals some unexpected trends in user behavior patterns",oh,1
+Reddit Voice Chat,"I noticed something interesting in the methodology section of that paper",oh can you elaborate on what specifically caught your attention,0
+Reddit Voice Chat,"This breakthrough in quantum computing research could change everything we know",wow,1
+Reddit Voice Chat,"The recent Supreme Court decision has far-reaching implications for civil liberties",wow I hadn't considered how it might affect digital privacy rights,0
+Reddit Voice Chat,"The correlation between social media usage and mental health outcomes is well-documented",right,1
+Reddit Voice Chat,"Climate change mitigation strategies need to be implemented at multiple governmental levels",right but local initiatives are often more effective than federal programs,0
+Reddit Voice Chat,"The experimental design in this study appears to control for most confounding variables",okay,1
+Reddit Voice Chat,"We should probably look at multiple sources before drawing any definitive conclusions",okay what other databases should we check for relevant studies,0
+Reddit Voice Chat,"This meta-analysis includes data from over 50 different research institutions worldwide",ok,1
+Reddit Voice Chat,"The sample size is large enough to make statistically significant inferences",ok but we should also consider potential selection bias in the methodology,0
+Reddit Voice Chat,"The results section provides detailed breakdown of demographic variables and outcomes",sure,1
+Reddit Voice Chat,"We could expand this discussion to include international perspectives on the topic",sure what about looking at the Nordic model specifically,0
+Reddit Voice Chat,"The peer review process for this journal is notoriously rigorous and thorough",alright,1
+Reddit Voice Chat,"I think we should schedule a follow-up discussion to dive deeper into these findings",alright how about we reconvene next week with additional research,0
+Reddit Voice Chat,"This approach to data visualization makes the complex relationships much clearer",great,1
+Reddit Voice Chat,"The interdisciplinary nature of this research makes it particularly valuable",great it's rare to see psychology and economics integrated so effectively,0
+Reddit Voice Chat,"The methodology section outlines a robust framework for future research applications",perfect,1
+Reddit Voice Chat,"We need more longitudinal studies to understand the long-term effects properly",perfect that's exactly what I was thinking about the temporal limitations,0
+Reddit Voice Chat,"The implications of this research extend far beyond the original scope of inquiry",exactly,1
+Reddit Voice Chat,"Academic discourse benefits tremendously from these kinds of open collaborative discussions",exactly and Reddit provides a unique platform for interdisciplinary dialogue,0
+Reddit Voice Chat,"This paper represents a significant contribution to the existing body of literature",absolutely,1
+Reddit Voice Chat,"The transparency in reporting methodology and limitations strengthens the overall credibility",absolutely and it sets a good standard for future research in this field,0
+Reddit Voice Chat,"I appreciate everyone's thoughtful contributions to today's discussion topic",gotcha,1
+Reddit Voice Chat,"Let's make sure to cite our sources properly when referencing these studies",gotcha should we create a shared bibliography for future reference,0
+Reddit Voice Chat,"The philosophical implications of this research raise some interesting ethical questions",hmm,1
+Reddit Voice Chat,"I wonder if we're overlooking some potential alternative explanations for these results",hmm have you considered looking at cultural variables as mediating factors,0
+Reddit Voice Chat,"This finding challenges some long-held assumptions in the field",indeed,1
+Reddit Voice Chat,"The reproducibility crisis in science makes studies like this even more valuable",indeed and the open data approach they used is commendable,0
+Reddit Voice Chat,"Thank you for sharing that fascinating perspective on the topic",certainly,1
+Reddit Voice Chat,"The interdisciplinary approach yields insights that wouldn't emerge from siloed research",certainly and it demonstrates the value of collaborative academic discourse,0
+Reddit Voice Chat,"The evidence base is becoming increasingly robust with each new publication",good point,1
+Reddit Voice Chat,"We should remain cautious about overgeneralizing from limited geographic samples",good point especially considering cultural and socioeconomic variations across regions,0
+NPR Interview,"The economic data shows inflation decreased by 0.2% last month due to energy cost reductions",mm-hmm,1
+NPR Interview,"The Federal Reserve's decision will likely impact mortgage rates significantly",mm-hmm but I think we need to consider the international market factors as well,0
+NPR Interview,"Recent studies indicate that climate change is accelerating faster than previous models predicted",yes,1
+NPR Interview,"The new healthcare legislation faces significant opposition in both chambers of Congress",yes and the pharmaceutical lobby has been particularly vocal in their resistance,0
+NPR Interview,"Educational outcomes have improved dramatically in districts that adopted these teaching methods",right,1
+NPR Interview,"The digital divide continues to impact rural communities disproportionately",right which is why the infrastructure bill includes substantial broadband funding,0
+NPR Interview,"Our research team analyzed data from over 200,000 participants across 15 countries",I see,1
+NPR Interview,"The migration patterns we're observing reflect broader global economic pressures",I see and this trend is likely to accelerate given current geopolitical tensions,0
+NPR Interview,"This breakthrough in renewable energy technology could revolutionize the entire sector",absolutely,1
+NPR Interview,"The Supreme Court's ruling establishes important precedent for future cases",absolutely and it will likely influence state-level legislation for years to come,0
+NPR Interview,"The pandemic fundamentally altered how we think about workplace flexibility and productivity",certainly,1
+NPR Interview,"Social media platforms face increasing scrutiny regarding content moderation policies",certainly though the First Amendment implications make regulation quite complex,0
+NPR Interview,"Archaeological evidence suggests this civilization was far more advanced than previously thought",indeed,1
+NPR Interview,"The correlation between income inequality and social mobility has strengthened over decades",indeed and this pattern appears consistent across multiple developed nations,0
+NPR Interview,"These findings challenge conventional wisdom about early childhood development",exactly,1
+NPR Interview,"The bipartisan nature of this legislation reflects genuine consensus on infrastructure needs",exactly though the funding mechanisms remain contentious among lawmakers,0
+NPR Interview,"Artificial intelligence will transform multiple industries over the next decade",that's true,1
+NPR Interview,"The housing affordability crisis affects middle-class families in unexpected ways",that's true particularly in suburban areas that were previously considered affordable,0
+NPR Interview,"Public health officials recommend updating vaccination protocols based on new variants",of course,1
+NPR Interview,"The environmental impact assessment reveals significant concerns about the proposed pipeline",of course but proponents argue the economic benefits justify the risks,0
+NPR Interview,"This diplomatic initiative represents a significant shift in foreign policy approach",correct,1
+NPR Interview,"The trade agreement negotiations have stalled due to agricultural subsidy disputes",correct and European Union representatives have expressed similar concerns,0
+NPR Interview,"Mental health services remain inadequately funded despite increased awareness of their importance",very well,1
+NPR Interview,"The demographic trends indicate substantial changes in voting patterns over time",very well and these shifts have major implications for electoral strategy,0
+NPR Interview,"Scientific consensus supports the effectiveness of these public health interventions",good point,1
+NPR Interview,"The regulatory framework needs updating to address technological innovations",good point especially given how rapidly the fintech sector is evolving,0
+NPR Interview,"Cultural institutions play a crucial role in community development and social cohesion",makes sense,1
+NPR Interview,"The tax reform proposal aims to simplify the code while maintaining revenue neutrality",makes sense though implementation will require significant administrative changes,0
+NPR Interview,"This historical analysis reveals patterns that weren't apparent in previous scholarship",I understand,1
+NPR Interview,"The international community's response has been coordinated through multilateral institutions",I understand but individual nation-states still maintain significant autonomy in implementation,0
+NPR Interview,"Voter turnout among young adults increased substantially in the most recent election cycle",I hear you,1
+NPR Interview,"The labor market data suggests a fundamental shift toward remote work arrangements",I hear you and this has implications for commercial real estate markets,0
+NPR Interview,"The pharmaceutical industry's pricing strategies have drawn criticism from consumer advocates",okay,1
+NPR Interview,"Market volatility reflects investor uncertainty about long-term economic recovery prospects",okay but what specific indicators should we be monitoring most closely,0
+NPR Interview,"These educational reforms have shown promising results in pilot programs",sure,1
+NPR Interview,"The cybersecurity threats facing critical infrastructure require coordinated government response",sure though private sector cooperation remains essential for effective defense,0
+NPR Interview,"The demographic transition will strain social security systems across developed nations",hmm,1
+NPR Interview,"Regional variations in policy implementation suggest federalism's limitations and strengths",hmm this raises interesting questions about optimal governance structures,0
+NPR Interview,"Historical precedent suggests caution when implementing such sweeping policy changes",ah,1
+NPR Interview,"The technological disruption we're witnessing parallels previous industrial transformations",ah but the pace of change seems unprecedented in human history,0
+Business Zoom Meeting,"Our Q3 revenue exceeded projections by 15% thanks to strong performance in the northeast region",yeah,1
+Business Zoom Meeting,"The client feedback has been overwhelmingly positive about the new user interface design",yeah but we should address the loading speed issues they mentioned,0
+Business Zoom Meeting,"The marketing campaign generated 40% more leads than our previous quarterly efforts",yes,1
+Business Zoom Meeting,"We need to finalize the budget allocation for next quarter's product development initiatives",yes and I think we should prioritize the mobile app enhancement,0
+Business Zoom Meeting,"The compliance audit revealed only minor documentation issues that we can easily resolve",right,1
+Business Zoom Meeting,"Our competitors launched a similar feature last week which puts pressure on our timeline",right so we should probably accelerate our own development schedule,0
+Business Zoom Meeting,"The new employee onboarding process has reduced training time by 30%",okay,1
+Business Zoom Meeting,"I think we should schedule follow-up meetings with each department head individually",okay but let's make sure we coordinate the timing with their existing commitments,0
+Business Zoom Meeting,"The supply chain disruptions have been resolved and deliveries are back on schedule",ok,1
+Business Zoom Meeting,"We're considering expanding into the European market within the next 18 months",ok what kind of regulatory requirements would we need to navigate,0
+Business Zoom Meeting,"The customer retention rate improved significantly after implementing the loyalty program",sure,1
+Business Zoom Meeting,"We could reallocate resources from the underperforming projects to high-priority initiatives",sure but we need to consider the impact on team morale,0
+Business Zoom Meeting,"The quarterly performance reviews are scheduled to begin next Monday morning",alright,1
+Business Zoom Meeting,"I propose we establish a cross-functional task force to address this integration challenge",alright who would you recommend as the team lead for that project,0
+Business Zoom Meeting,"The data analytics show that our target demographic is shifting toward mobile platforms",absolutely,1
+Business Zoom Meeting,"Our sustainability initiatives have reduced operational costs by 12% this year",absolutely and they've also improved our brand perception among younger consumers,0
+Business Zoom Meeting,"The partnership with TechCorp opens up significant opportunities for market expansion",exactly,1
+Business Zoom Meeting,"Remote work policies have increased employee satisfaction scores across all departments",exactly though we should monitor productivity metrics to ensure consistent output,0
+Business Zoom Meeting,"The product launch timeline looks achievable if we maintain current development velocity",correct,1
+Business Zoom Meeting,"Risk management protocols need updating to address emerging cybersecurity threats",correct and we should probably engage an external consultant for the assessment,0
+Business Zoom Meeting,"The sales team exceeded their targets for the fourth consecutive quarter",certainly,1
+Business Zoom Meeting,"This strategic pivot aligns perfectly with current market trends and consumer behavior",certainly but we'll need to communicate the changes clearly to all stakeholders,0
+Business Zoom Meeting,"Quality assurance testing identified several bugs that need immediate attention",indeed,1
+Business Zoom Meeting,"The competitive analysis reveals gaps in our current service offerings",indeed and I think we should prioritize developing those missing capabilities,0
+Business Zoom Meeting,"The board of directors approved the expansion budget at yesterday's meeting",I see,1
+Business Zoom Meeting,"International shipping costs have increased 25% due to fuel price fluctuations",I see so we may need to adjust our pricing strategy for overseas customers,0
+Business Zoom Meeting,"The new project management software has streamlined our workflow processes considerably",I understand,1
+Business Zoom Meeting,"We're facing some challenges with vendor relationships that could impact delivery schedules",I understand what specific steps should we take to mitigate these risks,0
+Business Zoom Meeting,"The market research indicates strong demand for our premium product tier",makes sense,1
+Business Zoom Meeting,"Employee feedback suggests we need better communication tools for distributed teams",makes sense especially with the increase in hybrid work arrangements,0
+Business Zoom Meeting,"The cost-benefit analysis supports investing in automation for our manufacturing processes",good point,1
+Business Zoom Meeting,"We should consider the long-term implications before making this strategic decision",good point what does our five-year plan say about resource allocation,0
+Business Zoom Meeting,"The legal team has reviewed all contracts and identified potential liability issues",that's true,1
+Business Zoom Meeting,"Customer service response times have improved dramatically since the system upgrade",that's true and the customer satisfaction scores reflect that improvement,0
+Business Zoom Meeting,"We'll need additional staffing to handle the increased workload next quarter",of course,1
+Business Zoom Meeting,"The training program should be mandatory for all employees handling sensitive data",of course but we need to ensure it doesn't conflict with operational schedules,0
+Business Zoom Meeting,"The technology infrastructure upgrade is proceeding on schedule and within budget",very well,1
+Business Zoom Meeting,"We should evaluate whether our current vendors can scale with our growth projections",very well and perhaps we should identify backup suppliers as contingency planning,0
+Business Zoom Meeting,"The financial projections look optimistic based on current market conditions",mm-hmm,1
+Business Zoom Meeting,"The stakeholder meeting revealed some concerns about our timeline estimates",mm-hmm so we probably need to build in additional buffer time,0
+Business Zoom Meeting,"The performance metrics indicate we're on track to meet our annual objectives",great,1
+Business Zoom Meeting,"This initiative aligns with our corporate social responsibility goals",great and it will likely generate positive media coverage as well,0
+Business Zoom Meeting,"The quarterly budget review is scheduled for next Friday afternoon",perfect,1
+Business Zoom Meeting,"We need to standardize our processes across all regional offices",perfect I can draft a proposal outlining the implementation strategy,0
+Business Zoom Meeting,"The client presentation went exceptionally well and they're ready to move forward",awesome,1
+Business Zoom Meeting,"The team's collaborative effort really paid off in delivering this complex project",awesome and we should document the best practices for future reference,0
+Business Zoom Meeting,"The merger discussions require careful consideration of cultural integration challenges",hmm,1
+Business Zoom Meeting,"We might need to reconsider our pricing strategy given the new market dynamics",hmm what if we conducted focus groups to test different price points,0
+Medical Consultation,"Your blood pressure readings have improved significantly since you started the new medication",yes,1
+Medical Consultation,"The chest pain you've been experiencing could be related to stress or anxiety",yes but I'm also concerned it might be something more serious,0
+Medical Consultation,"The test results show your cholesterol levels are within the normal range now",mm-hmm,1
+Medical Consultation,"I'd like to schedule a follow-up appointment in three months to monitor your progress",mm-hmm and should I continue with the same dosage until then,0
+Medical Consultation,"Your symptoms are consistent with a mild respiratory infection that should clear up soon",right,1
+Medical Consultation,"The medication I'm prescribing should help with the inflammation and pain",right but what should I do if the symptoms don't improve,0
+Medical Consultation,"The X-ray shows no signs of fracture but there is some soft tissue swelling",I see,1
+Medical Consultation,"Recovery time for this type of injury typically ranges from 4 to 6 weeks",I see so when can I safely return to my regular exercise routine,0
+Medical Consultation,"Your vaccination records are up to date which is excellent for your age group",okay,1
+Medical Consultation,"I recommend increasing your daily water intake and reducing sodium consumption",okay but are there specific foods I should completely avoid,0
+Medical Consultation,"The biopsy results came back negative which means no cancer cells were detected",I understand,1
+Medical Consultation,"Physical therapy will be essential for regaining full range of motion in your shoulder",I understand how many sessions per week would you recommend,0
+Medical Consultation,"Your heart rate and rhythm appear normal based on today's examination",absolutely,1
+Medical Consultation,"Regular exercise and a balanced diet will help manage your diabetes effectively",absolutely and I assume I should continue monitoring my blood sugar daily,0
+Medical Consultation,"The side effects you're experiencing are common and should subside within a few days",certainly,1
+Medical Consultation,"We may need to adjust your medication if these symptoms persist beyond next week",certainly should I contact your office if they worsen before then,0
+Medical Consultation,"Your vision has remained stable since your last eye examination six months ago",indeed,1
+Medical Consultation,"Wearing sunglasses and using eye drops will help protect against further irritation",indeed and are there specific brands you'd recommend for my condition,0
+Medical Consultation,"The surgery was successful and the healing process is progressing as expected",that's true,1
+Medical Consultation,"You'll need to keep the incision dry and change the dressing twice daily",that's true but what signs should I watch for that might indicate infection,0
+Medical Consultation,"Your bone density scan shows some decrease but nothing requiring immediate intervention",correct,1
+Medical Consultation,"Increasing calcium intake and weight-bearing exercise will help strengthen your bones",correct and should I consider taking calcium supplements as well,0
+Medical Consultation,"The allergy test identified several environmental triggers we should discuss",of course,1
+Medical Consultation,"Avoiding these allergens and using the prescribed inhaler should control your symptoms",of course but what should I do during severe allergic reactions,0
+Medical Consultation,"Your sleep study results indicate mild sleep apnea that we can treat effectively",very well,1
+Medical Consultation,"Using a CPAP machine at night will significantly improve your sleep quality",very well and how long does it typically take to adjust to using one,0
+Medical Consultation,"The blood work shows your kidney function is excellent for someone your age",good point,1
+Medical Consultation,"Staying hydrated and avoiding excessive ibuprofen will help maintain healthy kidney function",good point I had no idea pain relievers could affect kidney health,0
+Medical Consultation,"Your family history of heart disease means we should monitor you more closely",makes sense,1
+Medical Consultation,"Annual cardiac screenings and lifestyle modifications will help reduce your risk factors",makes sense what specific lifestyle changes would be most beneficial,0
+Medical Consultation,"The rash appears to be contact dermatitis likely caused by a new soap or detergent",I hear you,1
+Medical Consultation,"Switching to hypoallergenic products and using this cream should clear it up quickly",I hear you and should I avoid any other common household products,0
+Medical Consultation,"Your weight loss of 15 pounds is excellent progress toward your health goals",that makes sense,1
+Medical Consultation,"Continuing with your current diet and exercise plan will help you reach your target weight",that makes sense but should I be concerned about losing weight too quickly,0
+Medical Consultation,"The arthritis in your knees is manageable with proper treatment and lifestyle changes",ah,1
+Medical Consultation,"Low-impact exercises like swimming will help maintain joint flexibility without causing pain",ah and are there specific movements I should avoid during daily activities,0
+Medical Consultation,"Your migraine triggers seem to be related to stress and certain food sensitivities",hmm,1
+Medical Consultation,"Keeping a headache diary will help us identify patterns and develop better prevention strategies",hmm should I track everything I eat or just focus on suspected triggers,0
+Medical Consultation,"The chest tightness you described could be related to acid reflux rather than heart problems",oh,1
+Medical Consultation,"Avoiding spicy foods and eating smaller meals should help reduce these symptoms",oh and should I elevate my head when sleeping to prevent nighttime reflux,0
+Medical Consultation,"Your annual physical exam results are all within normal ranges for your age",great,1
+Medical Consultation,"Maintaining your current healthy habits will help you stay in excellent condition",great and when should I schedule my next comprehensive physical,0
+Medical Consultation,"The antibiotic course you completed successfully cleared the bacterial infection",perfect,1
+Medical Consultation,"Your immune system should be back to normal strength within the next few weeks",perfect but should I take any probiotics to restore healthy gut bacteria,0
+Legal Consultation,"The contract clearly states that you have 30 days to respond to any breach notification",yes,1
+Legal Consultation,"Your landlord cannot legally evict you without proper notice and due process",yes but what if they're claiming I violated the lease terms,0
+Legal Consultation,"The personal injury claim has strong merit based on the evidence you've provided",mhmm,1
+Legal Consultation,"We should file the lawsuit within the statute of limitations which expires next month",mhmm and what kind of settlement amount should we realistically expect,0
+Legal Consultation,"Your divorce proceedings will likely take 6-9 months to finalize completely",uh-huh,1
+Legal Consultation,"The prenuptial agreement you signed will significantly impact asset division",uh-huh so does that mean I won't get half of the house,0
+Legal Consultation,"The criminal charges against you are serious but we have several strong defenses",right,1
+Legal Consultation,"Your best option is to accept the plea bargain rather than risk a trial",right but wouldn't that mean admitting guilt for something I didn't do,0
+Legal Consultation,"The intellectual property lawsuit could result in significant financial liability",I see,1
+Legal Consultation,"Filing for trademark protection now will prevent future infringement issues",I see but how long does the trademark application process typically take,0
+Legal Consultation,"Your employment contract includes a non-compete clause that's legally enforceable",I understand,1
+Legal Consultation,"Violating the non-compete could result in substantial monetary penalties",I understand what exactly constitutes a violation in practical terms,0
+Legal Consultation,"The will contest has valid grounds based on your father's mental state",absolutely,1
+Legal Consultation,"We'll need medical records and witness testimony to support the claim",absolutely and would my father's doctor be willing to testify,0
+Legal Consultation,"Your business partnership agreement lacks key provisions for dispute resolution",certainly,1
+Legal Consultation,"Adding mediation and arbitration clauses will protect all parties involved",certainly but what happens if one partner refuses to participate,0
+Legal Consultation,"The bankruptcy filing will provide immediate protection from creditor harassment",indeed,1
+Legal Consultation,"Chapter 7 bankruptcy will eliminate most of your unsecured debt obligations",indeed but will I lose my house and car in the process,0
+Legal Consultation,"The custody arrangement can be modified if circumstances have changed significantly",exactly,1
+Legal Consultation,"Your ex-spouse's job relocation constitutes a substantial change in circumstances",exactly so this gives us grounds to request increased visitation rights,0
+Legal Consultation,"The real estate transaction requires several additional disclosures before closing",that's true,1
+Legal Consultation,"Environmental inspections and title searches must be completed within two weeks",that's true but what happens if the inspections reveal major problems,0
+Legal Consultation,"Your workers' compensation claim was wrongfully denied by the insurance company",correct,1
+Legal Consultation,"Filing an appeal within 30 days will preserve your right to benefits",correct and do I need to continue working while the appeal is pending,0
+Legal Consultation,"The sexual harassment complaint has merit under both state and federal law",of course,1
+Legal Consultation,"Documenting all incidents and preserving evidence will strengthen your case",of course but I'm worried about retaliation from my employer,0
+Legal Consultation,"The traffic violation carries potential license suspension if you're convicted",very well,1
+Legal Consultation,"Hiring a lawyer for traffic court often results in reduced charges",very well but is it worth the cost for a simple speeding ticket,0
+Legal Consultation,"Your slip and fall accident occurred on clearly defective property",good point,1
+Legal Consultation,"Property owners have a legal duty to maintain safe conditions for visitors",good point so the store should be held responsible for my injuries,0
+Legal Consultation,"The immigration petition has excellent chances of approval given your qualifications",makes sense,1
+Legal Consultation,"The processing time typically ranges from 8 to 14 months currently",makes sense but is there any way to expedite the application process,0
+Legal Consultation,"Your DUI charge carries mandatory minimum penalties including license suspension",umm,1
+Legal Consultation,"First-time offenders sometimes qualify for diversion programs instead of conviction",umm what exactly would a diversion program involve for me,0
+Legal Consultation,"The class action lawsuit against your former employer is proceeding as scheduled",okay,1
+Legal Consultation,"You'll be notified when it's time to submit documentation for damages calculation",okay but do I need to do anything else right now,0
+Legal Consultation,"Your social security disability claim was denied but we can appeal immediately",got it,1
+Legal Consultation,"The appeals process typically takes 12-18 months but has higher success rates",got it and can I work part-time while the appeal is pending,0
+Legal Consultation,"The merger agreement includes provisions that could affect your stock options",ah,1
+Legal Consultation,"You should exercise your options before the merger completion date next month",ah but what are the tax implications of exercising them now,0
+Legal Consultation,"Your homeowner's insurance claim was unfairly denied for water damage",mmm,1
+Legal Consultation,"Insurance companies often deny legitimate claims hoping customers won't fight back",mmm so filing a lawsuit might encourage them to reconsider,0
+Legal Consultation,"The probate process for your mother's estate will take approximately 6 months",alright,1
+Legal Consultation,"As executor you have fiduciary duties to all beneficiaries named in the will",alright what specific responsibilities do I have as executor,0
+Legal Consultation,"Your neighbor's fence clearly encroaches on your property by three feet",sure,1
+Legal Consultation,"A boundary survey will provide definitive proof for the property dispute",sure but what if they refuse to move the fence voluntarily,0
+Podcast Interview,"I started this company in my garage with just $500 and a dream to revolutionize the industry",yeah,1
+Podcast Interview,"The early days were incredibly challenging but taught me valuable lessons about resilience",yeah and I imagine that experience shaped your leadership style significantly,0
+Podcast Interview,"Our latest album was inspired by my travels through Southeast Asia last summer",uh-huh,1
+Podcast Interview,"The music scene there is so vibrant and incorporates traditional instruments in fascinating ways",uh-huh so did you end up collaborating with any local musicians,0
+Podcast Interview,"Writing this book took me seven years because I wanted to get every detail right",mhmm,1
+Podcast Interview,"The research process involved interviewing over 200 people from different backgrounds",mhmm and I bet some of those conversations really changed your perspective,0
+Podcast Interview,"The biggest misconception about my industry is that success happens overnight",right,1
+Podcast Interview,"Most people don't see the years of grinding and constant rejection before the breakthrough",right it's like seeing only the tip of the iceberg,0
+Podcast Interview,"My morning routine includes meditation journaling and a 5-mile run every single day",okay,1
+Podcast Interview,"Consistency in these small habits has been absolutely transformative for my productivity",okay but how do you maintain that routine when you're traveling constantly,0
+Podcast Interview,"The pandemic forced us to completely reimagine how we deliver our services",mmm-hmm,1
+Podcast Interview,"Remote work actually improved our company culture in ways I never expected",mmm-hmm though I imagine there were some significant challenges initially,0
+Podcast Interview,"My philosophy is that failure is just feedback disguised as disappointment",exactly,1
+Podcast Interview,"Every setback taught me something crucial about myself and my business",exactly and that mindset probably helped you bounce back faster,0
+Podcast Interview,"The tech industry moves so fast that what's cutting-edge today is obsolete tomorrow",absolutely,1
+Podcast Interview,"Staying relevant requires constant learning and adaptation to new technologies",absolutely which must be exhausting but also incredibly exciting,0
+Podcast Interview,"Mental health awareness in athletics has come such a long way in recent years",definitely,1
+Podcast Interview,"Athletes are finally comfortable discussing anxiety and depression openly",definitely and that's creating a much healthier culture in sports,0
+Podcast Interview,"The key to building wealth is understanding the difference between assets and liabilities",that's true,1
+Podcast Interview,"Most people think their house is an asset but it's actually a liability",that's true because it requires constant maintenance and doesn't generate income,0
+Podcast Interview,"Social media has completely changed how we connect with our audience",oh,1
+Podcast Interview,"The authenticity people crave now is very different from traditional marketing",oh so brands have to be much more transparent and genuine,0
+Podcast Interview,"Climate change isn't just an environmental issue it's an economic and social justice issue",wow,1
+Podcast Interview,"The communities most affected by pollution are often the least equipped to fight it",wow and that creates this terrible cycle of environmental inequality,0
+Podcast Interview,"My biggest regret is not starting this venture 10 years earlier than I did",hmm,1
+Podcast Interview,"But maybe I needed those extra years of experience to do it properly",hmm sometimes the timing works out better than we initially think,0
+Podcast Interview,"The creative process is messy chaotic and rarely follows a predictable path",indeed,1
+Podcast Interview,"Some of my best ideas come when I'm completely disconnected from work",indeed like taking a shower or going for a walk,0
+Podcast Interview,"Leadership isn't about having all the answers it's about asking better questions",I see,1
+Podcast Interview,"The best leaders create environments where others feel safe to share ideas",I see and psychological safety seems to be crucial for innovation,0
+Podcast Interview,"This documentary took three years to film across four different continents",certainly,1
+Podcast Interview,"The logistics of international travel with filming equipment were incredibly complex",certainly and I imagine the cultural barriers were challenging too,0
+Podcast Interview,"Artificial intelligence will transform every industry but not in the ways people expect",of course,1
+Podcast Interview,"The real revolution will be in augmenting human capabilities rather than replacing them",of course though that requires significant retraining for many workers,0
+Podcast Interview,"My relationship with money completely changed after growing up in poverty",sure,1
+Podcast Interview,"Financial literacy should be taught in schools starting from elementary age",sure because so many adults struggle with basic money management,0
+Podcast Interview,"The food industry has deliberately made processed foods addictive through chemical engineering",alright,1
+Podcast Interview,"Reading ingredient labels and cooking at home are acts of rebellion against that system",alright and it's also much more economical in the long run,0
+Podcast Interview,"Parenthood has made me more efficient and focused than I ever was before",great,1
+Podcast Interview,"When you only have limited time every minute becomes precious and intentional",great it's like having built-in time management training,0
+Podcast Interview,"The biggest challenge in my field is separating legitimate research from marketing hype",perfect,1
+Podcast Interview,"Critical thinking skills are more important now than ever given information overload",perfect especially with social media algorithms creating echo chambers,0
+Podcast Interview,"Travel has taught me that humans are fundamentally the same regardless of culture",ummm,1
+Podcast Interview,"We all want safety love and purpose but express those needs differently",ummm and yet we focus so much on our superficial differences,0
+Podcast Interview,"The subscription economy has changed consumer behavior in profound ways",got it,1
+Podcast Interview,"People now expect constant updates and improvements to everything they purchase",got it which puts enormous pressure on companies to innovate continuously,0
+Podcast Interview,"Vulnerability in leadership is often mistaken for weakness but it's actually strength",ah,1
+Podcast Interview,"Admitting mistakes and asking for help creates deeper trust with teams",ah and it probably encourages others to be more open too,0
+Late Night Talk Show,"So I heard you once got stuck in an elevator with three Grammy winners and a circus performer",yeah,1
+Late Night Talk Show,"That sounds like the setup to either a great story or a terrible joke",yeah and trust me it was definitely more story than joke,0
+Late Night Talk Show,"Your new movie has you playing a character who's afraid of butterflies which seems oddly specific",uh-huh,1
+Late Night Talk Show,"Did the writers base that phobia on someone they actually knew in real life",uh-huh apparently the director's cousin has that exact fear,0
+Late Night Talk Show,"I saw the behind-the-scenes footage of you learning to juggle for this role",mhmm,1
+Late Night Talk Show,"How many times did you accidentally hit yourself in the face with those flaming torches",mhmm way more times than I care to admit publicly,0
+Late Night Talk Show,"Your Instagram post about adopting 12 rescue cats went completely viral last week",right,1
+Late Night Talk Show,"Are you planning to become the crazy cat lady of Hollywood",right well I prefer to think of myself as an enthusiastic feline advocate,0
+Late Night Talk Show,"The paparazzi caught you grocery shopping in pajamas and a tiara yesterday",okay,1
+Late Night Talk Show,"Was that a fashion statement or did you lose a bet",okay it was actually research for my next character role,0
+Late Night Talk Show,"You've been nominated for an Emmy for playing a time-traveling librarian",mm-hmm,1
+Late Night Talk Show,"How do you prepare to play someone who's lived in seven different centuries",mm-hmm lots of history books and way too much coffee,0
+Late Night Talk Show,"I understand you once accidentally started a flash mob at a Starbucks",absolutely,1
+Late Night Talk Show,"How does one accidentally choreograph 50 strangers into synchronized dancing",absolutely well it started with me practicing my audition routine,0
+Late Night Talk Show,"Your co-star mentioned that you're secretly terrified of butterflies but love horror movies",exactly,1
+Late Night Talk Show,"That seems like a very specific combination of fears and interests",exactly I can handle zombies and ghosts but put a butterfly near me and I panic,0
+Late Night Talk Show,"The internet is obsessed with your TikTok videos where you cook while singing opera",that's true,1
+Late Night Talk Show,"Did you always plan to combine culinary arts with classical music",that's true actually it started as a way to make cooking less boring,0
+Late Night Talk Show,"You recently bought a house that's supposedly haunted by a friendly ghost named Edgar",of course,1
+Late Night Talk Show,"Have you and Edgar worked out any kind of roommate agreement",of course we've established boundaries and he's very respectful about noise levels,0
+Late Night Talk Show,"I heard you got into method acting so deeply you stayed in character for three months",indeed,1
+Late Night Talk Show,"Did your family and friends find that annoying or entertaining",indeed my mom stopped answering my calls because I only spoke in Shakespearean English,0
+Late Night Talk Show,"Your charity work includes teaching skateboarding to senior citizens",certainly,1
+Late Night Talk Show,"How did you discover that was something the world desperately needed",certainly my grandmother wanted to learn and it spiraled from there,0
+Late Night Talk Show,"The tabloids claim you collect vintage lunch boxes and have over 300 of them",very well,1
+Late Night Talk Show,"Is there a particular lunch box that holds special meaning for you",very well the Superman one from 1978 was my first and it started the obsession,0
+Late Night Talk Show,"You famously turned down three Marvel movies to star in an indie film about competitive knitting",good point,1
+Late Night Talk Show,"Do you ever regret choosing yarn over superpowers",good point sometimes but the knitting movie won me my first acting award,0
+Late Night Talk Show,"I saw you on social media teaching your dog to play piano",makes sense,1
+Late Night Talk Show,"Has he shown any particular preference for classical or contemporary music",makes sense he's definitely more of a Mozart dog than a Beethoven dog,0
+Late Night Talk Show,"Your workout routine apparently includes dancing with farm animals",umm,1
+Late Night Talk Show,"How did you discover that goats make excellent dance partners",umm my trainer thought traditional cardio was boring so we got creative,0
+Late Night Talk Show,"You've been learning Mandarin Swahili and sign language simultaneously this year",wow,1
+Late Night Talk Show,"Are you planning to become a professional translator or just showing off",wow actually I want to be able to communicate with fans worldwide,0
+Late Night Talk Show,"The rumor is you once got lost in your own mansion for six hours",oh,1
+Late Night Talk Show,"How big is this house that you need GPS to navigate it",oh it's not that big I just have a terrible sense of direction,0
+Late Night Talk Show,"Your autobiography is titled 'Accidentally Famous: A Guide to Stumbling Through Success'",great,1
+Late Night Talk Show,"Does that title accurately describe your journey in the entertainment industry",great pretty much everything good that's happened to me has been a happy accident,0
+Late Night Talk Show,"I understand you're learning to be a professional magician in your spare time",perfect,1
+Late Night Talk Show,"Have you mastered any tricks that would impress our studio audience tonight",perfect I can make your wallet disappear but I promise to give it back,0
+Late Night Talk Show,"You recently started a podcast where you interview your houseplants",alright,1
+Late Night Talk Show,"What's the most interesting thing you've learned from a conversation with a fern",alright they're surprisingly good listeners and never interrupt,0
+Late Night Talk Show,"Your fans have started a petition for you to host Saturday Night Live",sure,1
+Late Night Talk Show,"Would you be nervous about doing live television comedy",sure terrified is probably a more accurate word than nervous,0
+Late Night Talk Show,"I heard you've been taking trapeze lessons and plan to do your own stunts",hmm,1
+Late Night Talk Show,"Are insurance companies aware of this new hobby of yours",hmm let's just say my agent prefers not to know about certain activities,0
+Sports Commentary,"That quarterback just threw a 45-yard touchdown pass with three defenders hanging on him",yeah,1
+Sports Commentary,"The offensive line has been struggling all season with pass protection",yeah and you can see the quarterback getting nervous in the pocket,0
+Sports Commentary,"This running back has gained over 150 yards in just the first half alone",uh-huh,1
+Sports Commentary,"The defense needs to find a way to contain these outside runs",uh-huh maybe they should consider bringing the safeties down closer,0
+Sports Commentary,"The pitcher has thrown 27 consecutive strikes which ties a franchise record",mhmm,1
+Sports Commentary,"His control has been absolutely phenomenal throughout this entire game",mhmm and the catcher's been calling a perfect game behind the plate,0
+Sports Commentary,"This basketball team is shooting 65% from three-point range tonight",right,1
+Sports Commentary,"Their ball movement has been crisp and they're finding the open shooter",right plus the home crowd is really energizing their offense,0
+Sports Commentary,"The goalkeeper made an incredible diving save to keep the score tied",okay,1
+Sports Commentary,"That was probably the save of the season given the stakes of this match",okay and it completely shifted the momentum back to the home team,0
+Sports Commentary,"This tennis player has won 12 consecutive points to take control of the set",mmm-hmm,1
+Sports Commentary,"Her serve has been unreturnable and she's dominating the baseline rallies",mmm-hmm and her opponent looks completely frustrated out there,0
+Sports Commentary,"The swimmer just broke the world record by two full seconds",absolutely,1
+Sports Commentary,"That performance was simply dominant from start to finish",absolutely and she made it look effortless despite the incredible pace,0
+Sports Commentary,"This boxer has landed 75% of his power punches in the first six rounds",exactly,1
+Sports Commentary,"His jab is setting up everything and controlling the distance perfectly",exactly while his opponent can't seem to find any rhythm,0
+Sports Commentary,"The home team just scored three goals in the final ten minutes",wow,1
+Sports Commentary,"That comeback was absolutely spectacular given they were down by two",wow and the crowd noise is absolutely deafening right now,0
+Sports Commentary,"This golfer is 8 under par through 14 holes in the final round",certainly,1
+Sports Commentary,"If he maintains this pace he'll win by the largest margin in tournament history",certainly though the pressure on these final holes is intense,0
+Sports Commentary,"The rookie pitcher just struck out the side in his major league debut",indeed,1
+Sports Commentary,"His fastball is hitting 98 mph and his curveball has devastating movement",indeed and the veteran hitters look completely baffled by his stuff,0
+Sports Commentary,"This team has now won 15 consecutive games which sets a new league record",that's true,1
+Sports Commentary,"Their chemistry and execution have been flawless during this incredible streak",that's true and their confidence level seems to grow with each victory,0
+Sports Commentary,"The point guard just recorded his 15th assist of the game",of course,1
+Sports Commentary,"His court vision and passing ability are simply at an elite level tonight",of course and he's making everyone around him play better basketball,0
+Sports Commentary,"This cyclist has maintained the yellow jersey for 12 consecutive stages",very well,1
+Sports Commentary,"The mountain stages really suited his climbing ability and tactical approach",very well and his team's support has been absolutely crucial,0
+Sports Commentary,"The defensive end just recorded his third sack of the first quarter",good point,1
+Sports Commentary,"The offensive line can't handle his speed rush around the edge",good point and the quarterback is going to have to get the ball out faster,0
+Sports Commentary,"This hockey team has scored four power-play goals in the second period",makes sense,1
+Sports Commentary,"Their special teams unit has been the difference maker in this series",makes sense especially with all the penalties being called tonight,0
+Sports Commentary,"The center fielder just made a diving catch to rob a sure home run",ummm,1
+Sports Commentary,"That play completely changed the momentum and saved at least two runs",ummm and you could see the pitcher just shake his head in amazement,0
+Sports Commentary,"This fighter has landed three knockdowns in the opening round",oh,1
+Sports Commentary,"The referee is taking a close look to see if he should stop this fight",oh this could be over very quickly if he can't recover,0
+Sports Commentary,"The sprinter just ran the fastest 100-meter time in Olympic history",great,1
+Sports Commentary,"That final 20 meters was absolutely breathtaking to watch",great and you could see him pulling away from the field,0
+Sports Commentary,"This soccer team just scored on a bicycle kick from 25 yards out",perfect,1
+Sports Commentary,"The goalkeeper had no chance on that shot it was placed perfectly",perfect and that goal will definitely be replayed for years to come,0
+Sports Commentary,"The linebacker just forced his second fumble of the game",awesome,1
+Sports Commentary,"His timing on the strip is impeccable and he's reading the play perfectly",awesome plus the crowd is going absolutely wild after that turnover,0
+Sports Commentary,"This pitcher has thrown a no-hitter through seven complete innings",alright,1
+Sports Commentary,"The pressure is building with every batter as he approaches history",alright and you can feel the tension throughout the entire stadium,0
+Sports Commentary,"The power forward just scored 35 points on perfect shooting from the field",sure,1
+Sports Commentary,"Every shot he's taken has been in rhythm and within the flow",sure and his teammates are doing a great job finding him,0
+Sports Commentary,"This race car driver has led for 180 of the 200 laps completed",hmm,1
+Sports Commentary,"Fuel strategy might be the deciding factor in these final 20 laps",hmm and several drivers are going to have to pit soon,0
+Sports Commentary,"The gymnast just stuck a perfect landing on an incredibly difficult routine",got it,1
+Sports Commentary,"That routine had a degree of difficulty that few athletes even attempt",got it and the judges are going to have trouble finding any deductions,0
+Customer Service Call,"I'm calling because my internet has been completely down for the past three days",okay,1
+Customer Service Call,"My account number is 4487692 and I've already tried restarting the modem",okay let me pull up your account and run some diagnostic tests,0
+Customer Service Call,"The error message on my screen says 'connection timeout' every time I try to connect",I see,1
+Customer Service Call,"This started happening right after the storm last Tuesday night",I see so the outage is likely weather-related and affecting your area,0
+Customer Service Call,"My credit card was charged twice for the same purchase and I need a refund",yes,1
+Customer Service Call,"The duplicate charge appeared on my statement three days ago",yes I can process that refund immediately and it should appear within 3-5 business days,0
+Customer Service Call,"My package was supposed to arrive yesterday but the tracking shows it's still in transit",right,1
+Customer Service Call,"I need it urgently because it's a gift for my daughter's birthday tomorrow",right let me contact our shipping partner and see if we can expedite delivery,0
+Customer Service Call,"The software keeps crashing every time I try to save my work",mm-hmm,1
+Customer Service Call,"I've lost hours of progress and it's becoming extremely frustrating",mm-hmm let's try updating your software to the latest version first,0
+Customer Service Call,"My account was locked and I can't remember the security question answers",uh-huh,1
+Customer Service Call,"I've been a customer for over 10 years and just need to access my account",uh-huh I'll need to verify your identity using your social security number,0
+Customer Service Call,"The new phone I ordered arrived with a cracked screen in the box",absolutely,1
+Customer Service Call,"The packaging looked fine but the device was clearly damaged during shipping",absolutely we'll send you a replacement device overnight at no charge,0
+Customer Service Call,"My monthly bill is showing charges that I don't recognize or understand",certainly,1
+Customer Service Call,"There's a $25 fee listed as 'premium service upgrade' that I never requested",certainly that charge was added in error and I'm removing it now,0
+Customer Service Call,"The technician was supposed to arrive between 2-4 PM but never showed up",indeed,1
+Customer Service Call,"I took time off work specifically for this appointment",indeed I sincerely apologize and I'm scheduling you as our first appointment tomorrow,0
+Customer Service Call,"My prescription refill was denied even though I have three refills remaining",exactly,1
+Customer Service Call,"Your pharmacy system is showing that my insurance isn't active",exactly there's been a system error and I'm updating your insurance information,0
+Customer Service Call,"The automatic payment failed and now you're charging me a late fee",that's correct,1
+Customer Service Call,"But the payment failure was due to your system error not my bank",that's correct and I'm reversing the late fee since it wasn't your fault,0
+Customer Service Call,"I want to cancel my subscription but can't find the option online",of course,1
+Customer Service Call,"The website just keeps redirecting me to upgrade options instead",of course I can process the cancellation right now over the phone,0
+Customer Service Call,"My order was delivered to the wrong address despite correct shipping information",very well,1
+Customer Service Call,"The delivery driver left it at 123 Oak Street instead of 123 Elm Street",very well I'm sending a replacement order and investigating the delivery error,0
+Customer Service Call,"The promotional discount code isn't working during checkout",good point,1
+Customer Service Call,"The email said the code was valid through the end of this month",good point let me apply that discount manually to your current order,0
+Customer Service Call,"My phone screen went black and won't respond to any button presses",makes sense,1
+Customer Service Call,"It was working fine this morning but stopped after I got a text message",makes sense let's try a forced restart by holding the power button for 30 seconds,0
+Customer Service Call,"The return label you sent me has the wrong shipping address printed",ummm,1
+Customer Service Call,"It shows a facility in Texas but I'm supposed to ship to California",ummm that's definitely incorrect let me email you the correct return label,0
+Customer Service Call,"My warranty claim was rejected but I'm still within the coverage period",wow,1
+Customer Service Call,"I purchased this item only eight months ago and have the receipt",wow I'm reopening your warranty claim and escalating it to our senior team,0
+Customer Service Call,"The mobile app keeps logging me out every few minutes",oh,1
+Customer Service Call,"I've tried deleting and reinstalling but the problem persists",oh this sounds like a known issue that our developers are currently fixing,0
+Customer Service Call,"My flight was cancelled and I need to rebook for the same destination",great,1
+Customer Service Call,"There are three available flights tomorrow that would work for my schedule",great I can book you on the 2:15 PM flight with no change fees,0
+Customer Service Call,"The printer I bought last week is making strange grinding noises",perfect,1
+Customer Service Call,"It's also leaving black streaks on every page that I print",perfect this sounds like a defective unit so let's arrange an exchange,0
+Customer Service Call,"My streaming service keeps buffering even though my internet is fast",alright,1
+Customer Service Call,"Other apps work fine but yours is constantly stopping and starting",alright try clearing your app cache and restarting your streaming device,0
+Customer Service Call,"I was overcharged for international roaming during my vacation",sure,1
+Customer Service Call,"The bill shows $300 in charges but I was told it would be $50",sure I see the error and I'm crediting back $250 to your account,0
+Customer Service Call,"My laptop battery isn't holding a charge anymore after only six months",hmm,1
+Customer Service Call,"It drains completely within an hour even when I'm not using it heavily",hmm this is definitely a warranty issue and we'll replace the battery,0
+Customer Service Call,"The website won't accept my payment method during checkout",got it,1
+Customer Service Call,"I've tried three different credit cards and they all get declined",got it this appears to be a temporary payment processing issue on our end,0
+Therapy Session,"I've been feeling really anxious about starting this new job next week",mm-hmm,1
+Therapy Session,"The anxiety is getting worse and I'm not sure I can handle the pressure",mm-hmm and what specifically about the job is making you feel most anxious,0
+Therapy Session,"My relationship with my mother has always been complicated and stressful",mhmm,1
+Therapy Session,"She constantly criticizes everything I do and it's affecting my self-esteem",mhmm it sounds like those interactions are really painful for you,0
+Therapy Session,"I wake up every night around 3 AM and can't fall back asleep",uh-huh,1
+Therapy Session,"My mind just starts racing with all these worries about work and money",uh-huh so your sleep is being disrupted by anxious thoughts,0
+Therapy Session,"Sometimes I feel like I'm not good enough and everyone else has it figured out",right,1
+Therapy Session,"Social media makes it worse because everyone looks so successful and happy",right and those comparisons can be really harmful to your self-worth,0
+Therapy Session,"I've been avoiding social situations because they make me feel overwhelmed",I see,1
+Therapy Session,"Even hanging out with close friends feels exhausting lately",I see so you're withdrawing from your support system when you need it most,0
+Therapy Session,"My father passed away six months ago and I'm still struggling to cope",I understand,1
+Therapy Session,"Everyone expects me to be moving on but I feel stuck in grief",I understand and grief doesn't follow a timeline that others expect,0
+Therapy Session,"I keep having the same nightmare about losing control of my car",okay,1
+Therapy Session,"It happens almost every night and I wake up in a panic",okay and these dreams seem to be reflecting some deeper anxieties,0
+Therapy Session,"I feel guilty for being angry at my ex-husband even though he hurt me",absolutely,1
+Therapy Session,"Part of me thinks I should just forgive and forget everything that happened",absolutely but processing anger is often necessary before genuine forgiveness,0
+Therapy Session,"My teenage daughter won't talk to me and I don't know what I did wrong",certainly,1
+Therapy Session,"She used to tell me everything and now she barely acknowledges me",certainly and adolescence often involves pushing away from parents temporarily,0
+Therapy Session,"I have this overwhelming fear that something terrible will happen to my family",indeed,1
+Therapy Session,"The worry is constant and I check on everyone multiple times daily",indeed and that level of vigilance must be emotionally exhausting,0
+Therapy Session,"Work stress is affecting every aspect of my life including my marriage",exactly,1
+Therapy Session,"My husband says I'm always irritable and never present anymore",exactly so the stress is creating a ripple effect in your relationships,0
+Therapy Session,"I feel like I'm failing as a parent because I lose my temper too often",that's true,1
+Therapy Session,"My kids deserve better and I hate that they see me like this",that's true but recognizing this pattern is actually the first step toward change,0
+Therapy Session,"I can't stop thinking about mistakes I made years ago",of course,1
+Therapy Session,"These thoughts just loop in my head and make me feel ashamed",of course and ruminating on past mistakes keeps you stuck in guilt,0
+Therapy Session,"My panic attacks come out of nowhere and make me feel like I'm dying",very well,1
+Therapy Session,"The physical symptoms are so intense that I avoid leaving my house",very well and that avoidance is actually reinforcing the panic cycle,0
+Therapy Session,"I don't think I deserve happiness after what I've done in the past",good point,1
+Therapy Session,"Everyone tells me to let it go but I can't forgive myself",good point but self-compassion is often harder than extending compassion to others,0
+Therapy Session,"My depression makes everything feel pointless and overwhelming",makes sense,1
+Therapy Session,"Even simple tasks like showering or grocery shopping feel impossible",makes sense depression can make basic self-care feel monumentally difficult,0
+Therapy Session,"I'm afraid to tell my family about my mental health struggles",ummm,1
+Therapy Session,"They might think I'm weak or that there's something wrong with me",ummm but keeping this secret is probably adding to your emotional burden,0
+Therapy Session,"I feel disconnected from myself and don't know who I really am anymore",oh,1
+Therapy Session,"It's like I've been playing a role for so long I forgot my authentic self",oh and rediscovering your identity can feel both scary and liberating,0
+Therapy Session,"My childhood trauma still affects how I react to conflict today",great,1
+Therapy Session,"I either shut down completely or become defensive and angry",great recognizing these patterns shows real self-awareness and growth,0
+Therapy Session,"I worry that I'm becoming like my alcoholic father",perfect,1
+Therapy Session,"Sometimes I catch myself saying things he used to say",perfect but being aware of these patterns gives you power to choose differently,0
+Therapy Session,"I feel overwhelmed by all the changes happening in my life right now",alright,1
+Therapy Session,"Moving cities starting a new job and ending my marriage all at once",alright that's an enormous amount of transition to handle simultaneously,0
+Therapy Session,"I don't trust my own judgment anymore after making so many bad decisions",sure,1
+Therapy Session,"Every choice feels like it could be another mistake waiting to happen",sure and that self-doubt is probably making decision-making even harder,0
+Therapy Session,"My eating disorder thoughts are getting stronger and more frequent",hmm,1
+Therapy Session,"I know they're not rational but they feel so compelling and urgent",hmm and eating disorder thoughts often become louder during stressful times,0
+Therapy Session,"I feel like a burden to everyone and wonder if they'd be better without me",got it,1
+Therapy Session,"These thoughts scare me but they feel so real and persistent",got it and I'm glad you're sharing these thoughts because they're concerning,0
+Therapy Session,"I've been isolating myself because being around people feels too difficult",ah,1
+Therapy Session,"But the loneliness is making my depression worse which creates a cycle",ah so you're caught between needing connection and feeling unable to maintain it,0

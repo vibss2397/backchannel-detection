@@ -1,0 +1,434 @@
+scenario,previous_utterance,current_utterance,label
+Gaming Session Planning,"So the final boss has a shield phase, you have to use the EMP grenade to drop it before you can do any damage.","yeah",1
+Gaming Session Planning,"So the final boss has a shield phase, you have to use the EMP grenade to drop it before you can do any damage.","yeah that makes sense, I was just trying to brute force it.",0
+Gaming Session Planning,"Alright, I'm sending the party invite now, did you get it?","yes",1
+Gaming Session Planning,"Alright, I'm sending the party invite now, did you get it?","yes, but can you invite Chloe too? She just logged on.",0
+Gaming Session Planning,"You'll need the grappling hook to get across that chasm, it's in the supply cache on the western side of the map.","uh-huh",1
+Gaming Session Planning,"You'll need the grappling hook to get across that chasm, it's in the supply cache on the western side of the map.","uh-huh, is that the same cache where we found the sniper rifle last time?",0
+Gaming Session Planning,"First we'll do the daily quests to get the bonus XP, then we can run the new dungeon.","mhmm",1
+Gaming Session Planning,"First we'll do the daily quests to get the bonus XP, then we can run the new dungeon.","mhmm, and after that we should definitely try the new raid boss.",0
+Gaming Session Planning,"I think if we both spec into crowd control, we can probably handle that massive mob pull.","hmm",1
+Gaming Session Planning,"I think if we both spec into crowd control, we can probably handle that massive mob pull.","hmm, I'm not sure, my DPS would take a huge hit if I do that.",0
+Gaming Session Planning,"Dude, they just patched the game, the exploit we were using doesn't work anymore.","oh",1
+Gaming Session Planning,"Dude, they just patched the game, the exploit we were using doesn't work anymore.","oh, really? Where did you see the patch notes?",0
+Gaming Session Planning,"I finally got the legendary drop after like 200 runs last night.","wow",1
+Gaming Session Planning,"I finally got the legendary drop after like 200 runs last night.","wow, that's insane dedication, I would have given up after 50.",0
+Gaming Session Planning,"So we're meeting at the tower first to pick up the bounties before we head to the raid entrance.","right",1
+Gaming Session Planning,"So we're meeting at the tower first to pick up the bounties before we head to the raid entrance.","right, but make sure you have enough space in your inventory first.",0
+Gaming Session Planning,"I'll draw the aggro from the big guy, you focus on taking out the smaller adds that spawn.","okay",1
+Gaming Session Planning,"I'll draw the aggro from the big guy, you focus on taking out the smaller adds that spawn.","ok, but what if they spawn healers first? Should I prioritize them?",0
+Gaming Session Planning,"Can you grab the ammo crate while I revive him?","sure",1
+Gaming Session Planning,"Can you grab the ammo crate while I revive him?","sure, is it the one on the left or the right?",0
+Gaming Session Planning,"Let's log off for a bit and come back after the server resets in an hour.","alright",1
+Gaming Session Planning,"Let's log off for a bit and come back after the server resets in an hour.","alright, I'm gonna go grab some food in the meantime.",0
+Gaming Session Planning,"You can't parry his overhead swing, you have to dodge roll to the side instead.","gotcha",1
+Gaming Session Planning,"You can't parry his overhead swing, you have to dodge roll to the side instead.","gotcha, so it's like the second boss in the last expansion then?",0
+Gaming Session Planning,"They just announced double XP weekend starting tonight at midnight.","sweet",1
+Gaming Session Planning,"They just announced double XP weekend starting tonight at midnight.","sweet, we should definitely grind out our alternate characters then.",0
+Gaming Session Planning,"Check out the new skin I just unlocked for my character.","awesome",1
+Gaming Session Planning,"Check out the new skin I just unlocked for my character.","awesome, how many credits did that one cost you?",0
+Gaming Session Planning,"Just ping the location on the map when you find the target.","got it",1
+Gaming Session Planning,"Just ping the location on the map when you find the target.","got it, but my ping key isn't working, what's the default keybind?",0
+Gaming Session Planning,"We need a tank for this dungeon because the boss hits really hard with single-target attacks.","that makes sense",1
+Gaming Session Planning,"We need a tank for this dungeon because the boss hits really hard with single-target attacks.","that makes sense, I'll switch to my warrior build then.",0
+Gaming Session Planning,"I have an extra health potion if you need one before the fight.","perfect",1
+Gaming Session Planning,"I have an extra health potion if you need one before the fight.","perfect, can you drop it by the entrance?",0
+Gaming Session Planning,"So you mean we should coordinate our ultimate abilities to wipe them all at once?","exactly",1
+Gaming Session Planning,"So you mean we should coordinate our ultimate abilities to wipe them all at once?","exactly, you use yours first to stun them, then I'll follow up with mine for damage.",0
+Gaming Session Planning,"gonna grab a drink brb in 2","k",1
+Gaming Session Planning,"gonna grab a drink brb in 2","k, hurry back the queue just popped.",0
+Gaming Session Planning,"You still there? The match is about to start.","yo",1
+Gaming Session Planning,"You still there? The match is about to start.","yo I'm back, did I miss anything important?",0
+Tech Podcast Interview,"So you're saying the key differentiator is not just the algorithm itself, but the proprietary dataset you've trained it on.","yeah",1
+Tech Podcast Interview,"So you're saying the key differentiator is not just the algorithm itself, but the proprietary dataset you've trained it on.","yeah, that's precisely it, and that dataset is something our competitors simply can't replicate.",0
+Tech Podcast Interview,"And that initial seed round was for about two million dollars, correct?","yes",1
+Tech Podcast Interview,"And that initial seed round was for about two million dollars, correct?","yes, that gave us the runway we needed to hire our core engineering team.",0
+Tech Podcast Interview,"Our platform integrates directly with existing enterprise software, pulling data in real-time.","uh-huh",1
+Tech Podcast Interview,"Our platform integrates directly with existing enterprise software, pulling data in real-time.","uh-huh, and what's the typical integration timeline for a new enterprise client?",0
+Tech Podcast Interview,"We've found that Gen Z is our fastest-growing user segment, which was initially surprising to us.","hmm",1
+Tech Podcast Interview,"We've found that Gen Z is our fastest-growing user segment, which was initially surprising to us.","hmm, why do you think that demographic is resonating so much with your product?",0
+Tech Podcast Interview,"Our user growth last quarter was over 300% after the new feature launch.","wow",1
+Tech Podcast Interview,"Our user growth last quarter was over 300% after the new feature launch.","wow, that's an insane metric, was that all organic growth or was there a marketing push behind it?",0
+Tech Podcast Interview,"So the AI acts as a co-pilot for the developer, not as a replacement.","right",1
+Tech Podcast Interview,"So the AI acts as a co-pilot for the developer, not as a replacement.","right, so how do you prevent developers from becoming overly reliant on the tool?",0
+Tech Podcast Interview,"To scale up, we had to migrate our entire infrastructure from AWS to a multi-cloud environment.","okay",1
+Tech Podcast Interview,"To scale up, we had to migrate our entire infrastructure from AWS to a multi-cloud environment.","okay, can you walk us through the challenges you faced during that migration?",0
+Tech Podcast Interview,"We chose to focus on a narrow vertical initially to prove our product-market fit before expanding.","i see",1
+Tech Podcast Interview,"We chose to focus on a narrow vertical initially to prove our product-market fit before expanding.","i see, and how do you manage the complexity of all those services communicating with each other?",0
+Tech Podcast Interview,"We had to maintain two separate codebases during the transition, which really slowed down our feature velocity.","i understand",1
+Tech Podcast Interview,"We had to maintain two separate codebases during the transition, which really slowed down our feature velocity.","i understand, what was the final catalyst to finally deprecate the legacy system?",0
+Tech Podcast Interview,"Honestly, the biggest challenge wasn't the technology, it was convincing an old-school industry to embrace a new way of working.","i hear you",1
+Tech Podcast Interview,"Honestly, the biggest challenge wasn't the technology, it was convincing an old-school industry to embrace a new way of working.","i hear you, that cultural barrier can be even harder to overcome than the technical ones.",0
+Tech Podcast Interview,"So we're not just selling a tool, we're selling a new, more efficient workflow.","exactly",1
+Tech Podcast Interview,"So we're not just selling a tool, we're selling a new, more efficient workflow.","exactly, and how do you train your customers to adopt that new workflow effectively?",0
+Tech Podcast Interview,"You also have to consider the regulatory hurdles in the fintech space, which can be a huge barrier to entry.","good point",1
+Tech Podcast Interview,"You also have to consider the regulatory hurdles in the fintech space, which can be a huge barrier to entry.","good point, how has your company navigated the compliance landscape in Europe versus the US?",0
+Tech Podcast Interview,"The network effect is a powerful moat for our business; the more users we have, the more valuable the service becomes.","indeed",1
+Tech Podcast Interview,"The network effect is a powerful moat for our business; the more users we have, the more valuable the service becomes.","indeed, but how do you bootstrap that network effect from zero?",0
+Tech Podcast Interview,"I think having a strong company culture is non-negotiable for long-term success.","absolutely",1
+Tech Podcast Interview,"I think having a strong company culture is non-negotiable for long-term success.","absolutely, what are some specific rituals or practices you use to build and maintain that culture?",0
+Tech Podcast Interview,"So if I'm understanding this right, your annual recurring revenue is now north of ten million?","correct",1
+Tech Podcast Interview,"So if I'm understanding this right, your annual recurring revenue is now north of ten million?","correct, we hit that milestone in Q2 of this year.",0
+Customer Support Complaint,"I understand your frustration, and I want to assure you that I'm here to help you get this resolved.","yeah",1
+Customer Support Complaint,"I understand your frustration, and I want to assure you that I'm here to help you get this resolved.","yeah, but I've been trying to get it resolved for a week now and nobody has helped me.",0
+Customer Support Complaint,"Okay, so just to confirm, the serial number on the bottom of the device is ZT5-88B-91C?","yes",1
+Customer Support Complaint,"Okay, so just to confirm, the serial number on the bottom of the device is ZT5-88B-91C?","yes, and I've already given that number to three other agents today.",0
+Customer Support Complaint,"So first, I'll need you to unplug the device from the wall outlet for at least 60 seconds.","uh-huh",1
+Customer Support Complaint,"So first, I'll need you to unplug the device from the wall outlet for at least 60 seconds.","uh-huh, I did that already, it didn't do anything.",0
+Customer Support Complaint,"It looks like the system is showing your order was delivered successfully on the 15th.","hmm",1
+Customer Support Complaint,"It looks like the system is showing your order was delivered successfully on the 15th.","hmm, that's not possible, I was home all day and nothing ever arrived.",0
+Customer Support Complaint,"I see here in my system that your warranty actually expired last month.","oh",1
+Customer Support Complaint,"I see here in my system that your warranty actually expired last month.","oh, are you telling me you can't do anything to help me then?",0
+Customer Support Complaint,"So you're saying the device powers on, but it won't connect to your WiFi network.","right",1
+Customer Support Complaint,"So you're saying the device powers on, but it won't connect to your WiFi network.","right, and all my other devices connect just fine so I know it's not my router.",0
+Customer Support Complaint,"I'm going to put you on a brief hold for one to two minutes while I review your account details.","okay",1
+Customer Support Complaint,"I'm going to put you on a brief hold for one to two minutes while I review your account details.","ok, but can you please not transfer me again? I've been transferred four times already.",0
+Customer Support Complaint,"What I can do is process a replacement unit to be shipped out to you. It should arrive in 3-5 business days.","alright",1
+Customer Support Complaint,"What I can do is process a replacement unit to be shipped out to you. It should arrive in 3-5 business days.","alright, but can you expedite the shipping? I need it sooner than that.",0
+Customer Support Complaint,"I'm seeing a note on your file from a previous call indicating that a full reset was attempted.","i see",1
+Customer Support Complaint,"I'm seeing a note on your file from a previous call indicating that a full reset was attempted.","i see, and did the note mention that the reset made the problem even worse?",0
+Customer Support Complaint,"So, you need to go to the settings menu, then select 'Network', and then 'Forget This Network'.","got it",1
+Customer Support Complaint,"So, you need to go to the settings menu, then select 'Network', and then 'Forget This Network'.","got it, but the screen is frozen and I can't select anything.",0
+Customer Support Complaint,"The reason we need you to try it in a different power outlet is to rule out a faulty socket before we declare the device defective.","that makes sense",1
+Customer Support Complaint,"The reason we need you to try it in a different power outlet is to rule out a faulty socket before we declare the device defective.","that makes sense, but I've already plugged it in three different rooms and it's the same result.",0
+Customer Support Complaint,"I can definitely understand how frustrating it is when a brand new product doesn't work as expected.","i understand",1
+Customer Support Complaint,"I can definitely understand how frustrating it is when a brand new product doesn't work as expected.","i understand, so what are you going to do to fix it?",0
+Customer Support Complaint,"Would you be able to provide me with the order number from your confirmation email?","sure",1
+Customer Support Complaint,"Would you be able to provide me with the order number from your confirmation email?","sure, the number is 112-554-89, but the last person I talked to said it wasn't in your system.",0
+Customer Support Complaint,"...and once you've done that, the light should turn green. Are you still with me?","hello",1
+Customer Support Complaint,"...and once you've done that, the light should turn green. Are you still with me?","hello? Yes I'm here, you cut out for a second, what did you say about the light?",0
+Remote Stand-up Meeting,"So, my main blocker right now is waiting for the API key from the infrastructure team.","yeah",1
+Remote Stand-up Meeting,"So, my main blocker right now is waiting for the API key from the infrastructure team.","yeah, I had that same issue last week, you should ping Dave directly.",0
+Remote Stand-up Meeting,"Yesterday I finished refactoring the user authentication service and today I'll be writing the unit tests for it.","uh-huh",1
+Remote Stand-up Meeting,"Yesterday I finished refactoring the user authentication service and today I'll be writing the unit tests for it.","uh-huh, did you remember to account for the new MFA requirement in the tests?",0
+Remote Stand-up Meeting,"The build is failing in the CI/CD pipeline, but it runs fine on my local machine.","hmm",1
+Remote Stand-up Meeting,"The build is failing in the CI/CD pipeline, but it runs fine on my local machine.","hmm, have you checked if the environment variables are configured correctly in the pipeline?",0
+Remote Stand-up Meeting,"Just a heads-up, they're deprecating the v1 API we're using at the end of this quarter.","oh",1
+Remote Stand-up Meeting,"Just a heads-up, they're deprecating the v1 API we're using at the end of this quarter.","oh, I didn't see that email. We need to create a ticket for that migration ASAP.",0
+Remote Stand-up Meeting,"So the blocker is that the design specs from the UX team don't include error states for the form.","right",1
+Remote Stand-up Meeting,"So the blocker is that the design specs from the UX team don't include error states for the form.","right, I'll follow up with them after this call to get those added to the Figma file.",0
+Remote Stand-up Meeting,"I'll take the action item to schedule a follow-up meeting with the product team to clarify these requirements.","okay",1
+Remote Stand-up Meeting,"I'll take the action item to schedule a follow-up meeting with the product team to clarify these requirements.","ok, can you please invite me to that meeting as well?",0
+Remote Stand-up Meeting,"To test this, you'll need to use the VPN and connect to the staging database, not the production one.","gotcha",1
+Remote Stand-up Meeting,"To test this, you'll need to use the VPN and connect to the staging database, not the production one.","gotcha, what are the credentials for the staging database?",0
+Remote Stand-up Meeting,"I managed to fix that deployment bug yesterday, so the pipeline is unblocked now.","great",1
+Remote Stand-up Meeting,"I managed to fix that deployment bug yesterday, so the pipeline is unblocked now.","great, does that mean the staging environment is stable enough for QA to begin testing?",0
+Remote Stand-up Meeting,"The performance issue seems to be caused by a memory leak in the data processing module.","i see",1
+Remote Stand-up Meeting,"The performance issue seems to be caused by a memory leak in the data processing module.","i see, have we created a ticket to track the investigation for that leak?",0
+Remote Stand-up Meeting,"We need to finish the back-end work before the mobile team can start because they depend on our API.","that makes sense",1
+Remote Stand-up Meeting,"We need to finish the back-end work before the mobile team can start because they depend on our API.","that makes sense, what's the new ETA for the API then?",0
+Remote Stand-up Meeting,"I just pushed the final version of the API documentation to Confluence.","perfect",1
+Remote Stand-up Meeting,"I just pushed the final version of the API documentation to Confluence.","perfect, I'll review it today and let you know if I have any questions.",0
+Remote Stand-up Meeting,"We should also consider how this change will affect mobile users, not just desktop.","good point",1
+Remote Stand-up Meeting,"We should also consider how this change will affect mobile users, not just desktop.","good point, I'll add a task to run our test suite on an emulated mobile device.",0
+Remote Stand-up Meeting,"We're holding off on that feature until next sprint to align with the marketing team's launch schedule.","makes sense",1
+Remote Stand-up Meeting,"We're holding off on that feature until next sprint to align with the marketing team's launch schedule.","makes sense, so should I move that ticket back to the product backlog?",0
+Remote Stand-up Meeting,"Hey thanks for reviewing my pull request on such short notice.","no problem",1
+Remote Stand-up Meeting,"Hey thanks for reviewing my pull request on such short notice.","no problem, I left a few comments that you'll need to address before I can approve it.",0
+Food Vlogger Review,"Okay, the texture on this barbecue is just insane, it literally melts in your mouth.","yeah",1
+Food Vlogger Review,"Okay, the texture on this barbecue is just insane, it literally melts in your mouth.","yeah, it's way better than that place we went to last week.",0
+Food Vlogger Review,"And they make their own pickles in-house, you get that sourness cutting through the rich flavor of the meat.","uh-huh",1
+Food Vlogger Review,"And they make their own pickles in-house, you get that sourness cutting through the rich flavor of the meat.","uh-huh, I need to ask them if they sell these by the jar.",0
+Food Vlogger Review,"Just listen to this crunch on the fried chicken... it's perfectly seasoned.","mhmm",1
+Food Vlogger Review,"Just listen to this crunch on the fried chicken... it's perfectly seasoned.","mhmm, this is honestly the best fried chicken I've had in Atlanta.",0
+Food Vlogger Review,"And get this - the chef told me they brine it for a full 48 hours before frying.","oh",1
+Food Vlogger Review,"And get this - the chef told me they brine it for a full 48 hours before frying.","oh, that explains why it's so juicy on the inside.",0
+Food Vlogger Review,"Okay, look at the cheese pull on this slice of pizza! It just keeps going!","wow",1
+Food Vlogger Review,"Okay, look at the cheese pull on this slice of pizza! It just keeps going!","wow, can you get that in slow-motion for the video?",0
+Food Vlogger Review,"This is that Neapolitan style, so the crust is super thin in the middle with a big puffy edge.","right",1
+Food Vlogger Review,"This is that Neapolitan style, so the crust is super thin in the middle with a big puffy edge.","right, but it's still crispy on the bottom, it's not soggy at all.",0
+Food Vlogger Review,"Alright, I'm going in for a bite of the dessert now, this is the triple chocolate lava cake.","okay",1
+Food Vlogger Review,"Alright, I'm going in for a bite of the dessert now, this is the triple chocolate lava cake.","okay, save some for me, it looks incredible.",0
+Food Vlogger Review,"And on Tuesdays, they have half-price appetizers all day long.","sweet",1
+Food Vlogger Review,"And on Tuesdays, they have half-price appetizers all day long.","sweet, we should tell everyone in the comments to come on a Tuesday.",0
+Food Vlogger Review,"The owner just came over and gave us this extra dish to try on the house!","awesome",1
+Food Vlogger Review,"The owner just came over and gave us this extra dish to try on the house!","awesome, what is it? It smells amazing.",0
+Food Vlogger Review,"It's a little pricey, but for the quality you're getting, it's definitely worth it.","that's true",1
+Food Vlogger Review,"It's a little pricey, but for the quality you're getting, it's definitely worth it.","that's true, you would pay way more for this level of quality downtown.",0
+Food Vlogger Review,"So it's not just spicy, there's a real complexity to the heat, you can taste the different types of chilis.","exactly",1
+Food Vlogger Review,"So it's not just spicy, there's a real complexity to the heat, you can taste the different types of chilis.","exactly, it has that smoky chipotle flavor but then a bright heat at the end.",0
+Food Vlogger Review,"Should we get another order of these truffle fries?","of course",1
+Food Vlogger Review,"Should we get another order of these truffle fries?","of course, we can't leave until we have more of these.",0
+Food Vlogger Review,"Check this out, the ramen broth has been simmering for over 24 hours.","yo",1
+Food Vlogger Review,"Check this out, the ramen broth has been simmering for over 24 hours.","yo, you can totally tell, the flavor is so deep.",0
+NPR Author Interview,"And it seems that the main character's journey is not just a physical one, but a deep exploration of his own past.","yes",1
+NPR Author Interview,"And it seems that the main character's journey is not just a physical one, but a deep exploration of his own past.","yes, that was very intentional. I wanted the landscape to be a mirror for his internal state.",0
+NPR Author Interview,"You spend a great deal of the second chapter describing the market, with all of its sounds and smells.","uh-huh",1
+NPR Author Interview,"You spend a great deal of the second chapter describing the market, with all of its sounds and smells.","uh-huh, because that market is really a microcosm of the entire city and its conflicts.",0
+NPR Author Interview,"So you chose to write the novel from three different characters' perspectives, which is a complex undertaking.","hmm",1
+NPR Author Interview,"So you chose to write the novel from three different characters' perspectives, which is a complex undertaking.","hmm, I'm not sure I ever thought of it as a choice. The story simply couldn't be told through a single lens.",0
+NPR Author Interview,"It's interesting that the antagonist isn't a person, but rather the slow decay of the town itself.","oh",1
+NPR Author Interview,"It's interesting that the antagonist isn't a person, but rather the slow decay of the town itself.","oh, I think that's a very astute reading of it, yes.",0
+NPR Author Interview,"I wrote that line on a flight to Atlanta, actually, feeling very disconnected from the world below.","ah",1
+NPR Author Interview,"I wrote that line on a flight to Atlanta, actually, feeling very disconnected from the world below.","ah, that certainly explains the sense of detachment in that passage.",0
+NPR Author Interview,"So the recurring image of the lone magpie is a symbol of the protagonist's isolation.","right",1
+NPR Author Interview,"So the recurring image of the lone magpie is a symbol of the protagonist's isolation.","right, but it's also a symbol of resilience, of finding a way to survive alone.",0
+NPR Author Interview,"So I spent about six months in the national archives, just reading through old ship logs.","i see",1
+NPR Author Interview,"So I spent about six months in the national archives, just reading through old ship logs.","i see, what was the most surprising thing you discovered in those logs?",0
+NPR Author Interview,"I ended up cutting a character that was very dear to me, simply because she wasn't serving the larger narrative arc.","that makes sense",1
+NPR Author Interview,"I ended up cutting a character that was very dear to me, simply because she wasn't serving the larger narrative arc.","that makes sense, though it must have been a painful decision to make.",0
+NPR Author Interview,"The final chapter takes place twenty years after the main events of the book, which gives the reader some perspective.","i understand",1
+NPR Author Interview,"The final chapter takes place twenty years after the main events of the book, which gives the reader some perspective.","i understand, what made you decide to include that time jump instead of ending on the climax?",0
+NPR Author Interview,"So the setting itself, the house, becomes a character in its own right.","absolutely",1
+NPR Author Interview,"So the setting itself, the house, becomes a character in its own right.","absolutely, its decay mirrors the family's falling apart.",0
+NPR Author Interview,"It seems to be a story about memory, and how unreliable it can be.","indeed",1
+NPR Author Interview,"It seems to be a story about memory, and how unreliable it can be.","indeed, and how a family can build a collective memory that is at odds with reality.",0
+NPR Author Interview,"That must have been a difficult chapter to write, emotionally.","certainly",1
+NPR Author Interview,"That must have been a difficult chapter to write, emotionally.","certainly, I had to step away from the manuscript for several weeks after finishing it.",0
+NPR Author Interview,"I wonder if you could read a short passage for us?","of course",1
+NPR Author Interview,"I wonder if you could read a short passage for us?","of course, I'll read from the beginning of chapter three.",0
+WiFi Troubleshooting,"The little light with the globe icon next to it should be solid green, not blinking.","yeah",1
+WiFi Troubleshooting,"The little light with the globe icon next to it should be solid green, not blinking.","yeah, it's definitely blinking. What does that mean?",0
+WiFi Troubleshooting,"Did you try turning it off and on again? Like, the main router.","yes",1
+WiFi Troubleshooting,"Did you try turning it off and on again? Like, the main router.","yes, I unplugged it for a minute just like you said.",0
+WiFi Troubleshooting,"Okay, now you need to open a web browser, like Chrome or Safari.","uh-huh",1
+WiFi Troubleshooting,"Okay, now you need to open a web browser, like Chrome or Safari.","uh-huh, okay, I opened the 'e' thing, is that right?",0
+WiFi Troubleshooting,"In the address bar at the very top, you have to type in 192.168.1.1 and hit enter.","hmm",1
+WiFi Troubleshooting,"In the address bar at the very top, you have to type in 192.168.1.1 and hit enter.","hmm, it's not working, it just took me to a Google search.",0
+WiFi Troubleshooting,"It's asking for a username and password. It should be printed on the sticker on the bottom of the router.","oh",1
+WiFi Troubleshooting,"It's asking for a username and password. It should be printed on the sticker on the bottom of the router.","oh, I see it. It's really tiny, let me get my glasses.",0
+WiFi Troubleshooting,"So the password for the WiFi is 'password', but with a zero instead of an 'o' and an exclamation point at the end.","right",1
+WiFi Troubleshooting,"So the password for the WiFi is 'password', but with a zero instead of an 'o' and an exclamation point at the end.","right, so it's p-a-s-s-w-0-r-d-exclamation point?",0
+WiFi Troubleshooting,"Just wait a few minutes for all the lights to come back on. Don't touch anything.","okay",1
+WiFi Troubleshooting,"Just wait a few minutes for all the lights to come back on. Don't touch anything.","ok, how long is a few minutes? The TV is still not working.",0
+WiFi Troubleshooting,"Now try to connect your phone to the network again. It should show up in your WiFi list.","alright",1
+WiFi Troubleshooting,"Now try to connect your phone to the network again. It should show up in your WiFi list.","alright, I'm looking... I see 'xfinitywifi' and 'Smith_Network_5G', which one is it?",0
+WiFi Troubleshooting,"No, don't click 'Factory Reset', that will erase everything. Just click 'Reboot'.","gotcha",1
+WiFi Troubleshooting,"No, don't click 'Factory Reset', that will erase everything. Just click 'Reboot'.","gotcha, okay, rebooting now. How can they put those buttons so close together?",0
+WiFi Troubleshooting,"The problem is that too many devices are connected at once and it's kicking the older ones off.","i see",1
+WiFi Troubleshooting,"The problem is that too many devices are connected at once and it's kicking the older ones off.","i see, so is that why the smart toaster keeps going offline?",0
+WiFi Troubleshooting,"Unplug the black power cord from the back of the box for 30 seconds.","got it",1
+WiFi Troubleshooting,"Unplug the black power cord from the back of the box for 30 seconds.","got it, but there are two black cords, which one?",0
+WiFi Troubleshooting,"We pay for 200 megabits per second, but because the router is so old, you're only getting about 20 in the living room.","that makes sense",1
+WiFi Troubleshooting,"We pay for 200 megabits per second, but because the router is so old, you're only getting about 20 in the living room.","that makes sense, so do we need to buy a new one?",0
+WiFi Troubleshooting,"Did you click the button? Dad? Are you still there?","hello",1
+WiFi Troubleshooting,"Did you click the button? Dad? Are you still there?","hello, yes, sorry, I was just writing down the password you told me.",0
+Dinner Debate,"I'm kinda feeling pizza tonight, something easy.","yeah",1
+Dinner Debate,"I'm kinda feeling pizza tonight, something easy.","yeah, but we had pizza on Monday, didn't we?",0
+Dinner Debate,"So we agree, no cooking tonight, right?","yes",1
+Dinner Debate,"So we agree, no cooking tonight, right?","yes, I absolutely do not have the energy to wash a single dish.",0
+Dinner Debate,"Okay, so there's that new Thai place on Uber Eats that has really good reviews for their Pad See Ew.","uh-huh",1
+Dinner Debate,"Okay, so there's that new Thai place on Uber Eats that has really good reviews for their Pad See Ew.","uh-huh, what else do they have? I'm not really in a noodle mood.",0
+Dinner Debate,"I could also go for tacos. The place down the street has deals on Tuesdays.","mhmm",1
+Dinner Debate,"I could also go for tacos. The place down the street has deals on Tuesdays.","mhmm, but remember how long the wait was last time we tried that?",0
+Dinner Debate,"What about just getting burgers?","hmm",1
+Dinner Debate,"What about just getting burgers?","hmm, I don't know, I had a big lunch, I was thinking something lighter.",0
+Dinner Debate,"Wait, I totally forgot, I have leftover chicken and rice in the fridge from yesterday.","oh",1
+Dinner Debate,"Wait, I totally forgot, I have leftover chicken and rice in the fridge from yesterday.","oh, nice! Is there enough for both of us?",0
+Dinner Debate,"So if we order from here, the delivery fee is an extra eight bucks.","right",1
+Dinner Debate,"So if we order from here, the delivery fee is an extra eight bucks.","right, so maybe we should just go pick it up ourselves.",0
+Dinner Debate,"Alright, let's just flip a coin. Heads for Indian, tails for Mexican.","okay",1
+Dinner Debate,"Alright, let's just flip a coin. Heads for Indian, tails for Mexican.","ok, but if it's Indian, can we make sure to get garlic naan?",0
+Dinner Debate,"I'm fine with Chinese food if you are.","sure",1
+Dinner Debate,"I'm fine with Chinese food if you are.","sure, as long as we can get crab rangoon and scallion pancakes.",0
+Dinner Debate,"My coupon only works on orders over thirty dollars, so we need to add one more thing.","gotcha",1
+Dinner Debate,"My coupon only works on orders over thirty dollars, so we need to add one more thing.","gotcha, let's just add an order of spring rolls then.",0
+Dinner Debate,"I just found a 30% off promo code for DoorDash.","sweet",1
+Dinner Debate,"I just found a 30% off promo code for DoorDash.","sweet, does that work for any restaurant?",0
+Dinner Debate,"That pizza place is good, but it always takes them over an hour to deliver.","that's true",1
+Dinner Debate,"That pizza place is good, but it always takes them over an hour to deliver.","that's true, and I'm already starving.",0
+Dinner Debate,"I'm sending you the link to the menu now.","k",1
+Dinner Debate,"I'm sending you the link to the menu now.","k, let me know what you want and I'll add it to the cart.",0
+Virtual Fitness Class,"You should be feeling that burn right in your glutes now, keep that core tight!","ya",1
+Virtual Fitness Class,"You should be feeling that burn right in your glutes now, keep that core tight!","yeah, am I supposed to feel it in my lower back too?",0
+Virtual Fitness Class,"Last ten seconds of this plank, you've got this, everyone! Can you hold it?","yes",1
+Virtual Fitness Class,"Last ten seconds of this plank, you've got this, everyone! Can you hold it?","yes, but my form is starting to shake, is that okay?",0
+Virtual Fitness Class,"Okay, now we're moving into jumping jacks. Just get that heart rate up.","uh huh",1
+Virtual Fitness Class,"Okay, now we're moving into jumping jacks. Just get that heart rate up.","uh-huh, how long are we doing these for?",0
+Virtual Fitness Class,"Remember to land softly on the balls of your feet, protect those knees.","mmhmm",1
+Virtual Fitness Class,"Remember to land softly on the balls of your feet, protect those knees.","mhmm, my left knee is clicking a little bit, should I modify?",0
+Virtual Fitness Class,"And time! Grab a quick sip of water. You have 30 seconds.","oh",1
+Virtual Fitness Class,"And time! Grab a quick sip of water. You have 30 seconds.","oh, thank goodness, what's the next exercise we're doing?",0
+Virtual Fitness Class,"Look at that, we just burned over 200 calories in that first circuit alone!","wow",1
+Virtual Fitness Class,"Look at that, we just burned over 200 calories in that first circuit alone!","wow, I'm already sweating more than I did all last week.",0
+Virtual Fitness Class,"So you want to keep your back straight, chest up, and sink down like you're sitting in a chair.","right",1
+Virtual Fitness Class,"So you want to keep your back straight, chest up, and sink down like you're sitting in a chair.","right, so my knees shouldn't go past my toes?",0
+Virtual Fitness Class,"Alright team, we're going to do that whole circuit one more time from the top.","ok",1
+Virtual Fitness Class,"Alright team, we're going to do that whole circuit one more time from the top.","okay... can you remind me what the first exercise was again?",0
+Virtual Fitness Class,"When you do the push-up, lead with your chest, not your head.","gotcha",1
+Virtual Fitness Class,"When you do the push-up, lead with your chest, not your head.","gotcha, I think I was doing that wrong the whole time.",0
+Virtual Fitness Class,"And for our cool-down, we're just going to do some light stretching to my favorite chill playlist.","sweet",1
+Virtual Fitness Class,"And for our cool-down, we're just going to do some light stretching to my favorite chill playlist.","sweet, what's the name of this song? I love it.",0
+Virtual Fitness Class,"Okay, we're going to hold this stretch for 30 seconds on each side.","perfect",1
+Virtual Fitness Class,"Okay, we're going to hold this stretch for 30 seconds on each side.","perfect, am I supposed to feel this in my hamstring?",0
+Virtual Fitness Class,"Don't forget to breathe! In through the nose, out through the mouth.","hey, quick question, what's a good modification if I can't do a full burpee?",0
+Virtual Fitness Class,"Alright, we're switching to mountain climbers in 3... 2... 1... go!","k",1
+Virtual Fitness Class,"Alright, we're switching to mountain climbers in 3... 2... 1... go!","k... how many of these are we doing?",0
+Financial Advisor Meeting,"So, just to confirm, your primary goal for this investment is long-term growth for retirement, correct?","yes",1
+Financial Advisor Meeting,"So, just to confirm, your primary goal for this investment is long-term growth for retirement, correct?","yes, but I'd also like to keep some cash liquid for a potential down payment on a house.",0
+Financial Advisor Meeting,"Based on your age and risk tolerance, I'd suggest a diversified portfolio with a 70% allocation in equities and 30% in fixed-income assets.","uh-huh",1
+Financial Advisor Meeting,"Based on your age and risk tolerance, I'd suggest a diversified portfolio with a 70% allocation in equities and 30% in fixed-income assets.","uh-huh, can you explain what 'fixed-income assets' are exactly?",0
+Financial Advisor Meeting,"The expense ratio on this particular mutual fund is 0.05%, which is considered very low and won't significantly eat into your returns over time.","hmmm",1
+Financial Advisor Meeting,"The expense ratio on this particular mutual fund is 0.05%, which is considered very low and won't significantly eat into your returns over time.","hmm, what's a typical expense ratio for a fund like this?",0
+Financial Advisor Meeting,"And because this is a Roth IRA, all of your qualified withdrawals in retirement will be completely tax-free.","oh",1
+Financial Advisor Meeting,"And because this is a Roth IRA, all of your qualified withdrawals in retirement will be completely tax-free.","oh, I didn't realize that. How does that differ from a traditional IRA?",0
+Financial Advisor Meeting,"The idea behind dollar-cost averaging is that you invest a fixed amount of money at regular intervals, regardless of what the market is doing.","right",1
+Financial Advisor Meeting,"The idea behind dollar-cost averaging is that you invest a fixed amount of money at regular intervals, regardless of what the market is doing.","right, so that helps to average out the purchase price over time?",0
+Financial Advisor Meeting,"The next step would be for me to send you the account opening documents via our secure portal.","ok",1
+Financial Advisor Meeting,"The next step would be for me to send you the account opening documents via our secure portal.","okay, and how long does it usually take for the account to be active after I sign?",0
+Financial Advisor Meeting,"This portfolio is globally diversified, which means you're not just invested in the U.S. market. This helps to mitigate regional economic risks.","i see",1
+Financial Advisor Meeting,"This portfolio is globally diversified, which means you're not just invested in the U.S. market. This helps to mitigate regional economic risks.","i see, so if the U.S. market has a bad year, the international investments might balance it out?",0
+Financial Advisor Meeting,"We will automatically rebalance your portfolio once a year to ensure the asset allocation stays in line with your target.","got it",1
+Financial Advisor Meeting,"We will automatically rebalance your portfolio once a year to ensure the asset allocation stays in line with your target.","got it, but what happens if there's a huge market crash? Do you rebalance then too?",0
+Financial Advisor Meeting,"Since you're young and have a long time horizon, you can afford to take on more risk for the potential of higher growth.","that makes sense",1
+Financial Advisor Meeting,"Since you're young and have a long time horizon, you can afford to take on more risk for the potential of higher growth.","that makes sense, but what happens to that risk level as I get closer to retirement age?",0
+Financial Advisor Meeting,"It's important to remember that past performance is not an indicator of future results; the market can be unpredictable.","i understand",1
+Financial Advisor Meeting,"It's important to remember that past performance is not an indicator of future results; the market can be unpredictable.","i understand, but what has the historical return been for this type of portfolio?",0
+Financial Advisor Meeting,"So, I will prepare the paperwork and follow up with you by email tomorrow morning.","very well",1
+Financial Advisor Meeting,"So, I will prepare the paperwork and follow up with you by email tomorrow morning.","very well, what's the best way to contact you if I have questions before then?",0
+Gen Z Social Media Gossip,"did u see the apology video he posted? the fake crying was so cringe.","ya",1
+Gen Z Social Media Gossip,"did u see the apology video he posted? the fake crying was so cringe.","ya but did you read the comments? everyone is dragging him.",0
+Gen Z Social Media Gossip,"she's literally just copying everything that other creator does, even the video editing style.","uh huh",1
+Gen Z Social Media Gossip,"she's literally just copying everything that other creator does, even the video editing style.","uh huh and now she's trying to sell merch like it was her idea.",0
+Gen Z Social Media Gossip,"so i think they're secretly dating, he was in the background of her last story.","mhmm",1
+Gen Z Social Media Gossip,"so i think they're secretly dating, he was in the background of her last story.","mhmm i saw that! do you think that's why he broke up with his ex?",0
+Gen Z Social Media Gossip,"idk his new content is just not hitting the same since he signed with that agency.","hmmm",1
+Gen Z Social Media Gossip,"idk his new content is just not hitting the same since he signed with that agency.","hmm maybe he's just running out of ideas.",0
+Gen Z Social Media Gossip,"omg she just posted that they're taking a break from the internet.","oh",1
+Gen Z Social Media Gossip,"omg she just posted that they're taking a break from the internet.","oh wait for real? let me go look.",0
+Gen Z Social Media Gossip,"he got like a million new followers just from that one video.","wow",1
+Gen Z Social Media Gossip,"he got like a million new followers just from that one video.","wow i can't believe that went so viral, it wasn't even that funny.",0
+Gen Z Social Media Gossip,"it's so obvious he bought those followers, his engagement is terrible.","right",1
+Gen Z Social Media Gossip,"it's so obvious he bought those followers, his engagement is terrible.","right? like 2 million followers but 1000 likes on a pic? make it make sense.",0
+Gen Z Social Media Gossip,"anyway i'm over it, let's talk about something else.","ok",1
+Gen Z Social Media Gossip,"anyway i'm over it, let's talk about something else.","ok but first send me the link to that video you were talking about.",0
+Gen Z Social Media Gossip,"are you gonna watch her live stream later? she's supposed to address the drama.","sure",1
+Gen Z Social Media Gossip,"are you gonna watch her live stream later? she's supposed to address the drama.","sure if you remind me, i'll probably forget.",0
+Gen Z Social Media Gossip,"okay i'm officially unfollowing him, the second hand embarrassment is too much.","alright",1
+Gen Z Social Media Gossip,"okay i'm officially unfollowing him, the second hand embarrassment is too much.","alright i'm doing it too, it's for my own mental health.",0
+Gen Z Social Media Gossip,"so the drama is that she used a copyrighted sound and now her video is muted.","gotcha",1
+Gen Z Social Media Gossip,"so the drama is that she used a copyrighted sound and now her video is muted.","gotcha, that's why everyone in the comments is making fun of her.",0
+Gen Z Social Media Gossip,"she's doing a giveaway for a new phone to the person with the best comment.","awesome",1
+Gen Z Social Media Gossip,"she's doing a giveaway for a new phone to the person with the best comment.","awesome, what do you think i should write?",0
+Gen Z Social Media Gossip,"he's probably just doing it for the attention, any drama is good for views.","that's true",1
+Gen Z Social Media Gossip,"he's probably just doing it for the attention, any drama is good for views.","that's true, but i still feel like it's gonna backfire on him.",0
+Gen Z Social Media Gossip,"so she's basically acting like she invented the trend when people were doing it months ago.","exactly",1
+Gen Z Social Media Gossip,"so she's basically acting like she invented the trend when people were doing it months ago.","exactly! and her fans don't even care, they're defending her in the comments.",0
+Gen Z Social Media Gossip,"brb my mom is calling me","k",1
+Gen Z Social Media Gossip,"brb my mom is calling me","k text me after, i have more tea",0
+Gen Z Social Media Gossip,"check out his latest reel, the fit is so bad.","yo",1
+Gen Z Social Media Gossip,"check out his latest reel, the fit is so bad.","yo i just saw it, what was he thinking with those shoes?",0
+Gen Z Social Media Gossip,"and then she deleted the whole post like nothing happened.","hello",1
+Gen Z Social Media Gossip,"and then she deleted the whole post like nothing happened.","hello? does she think people didn't screen record it?",0
+University Office Hours,"So, you're having trouble with the thesis statement for the upcoming essay, is that right?","yes",1
+University Office Hours,"So, you're having trouble with the thesis statement for the upcoming essay, is that right?","yes, I have a topic, but I'm not sure how to make the argument specific enough.",0
+University Office Hours,"You need to make sure your argument is debatable. You need to take a position that you can support with evidence from the text.","uh-huh",1
+University Office Hours,"You need to make sure your argument is debatable. You need to take a position that you can support with evidence from the text.","uh-huh, so instead of just saying the author uses symbolism, I should argue what the symbolism *means*?",0
+University Office Hours,"Have you considered looking at the critical theory we discussed last week? The post-colonial lens could be very applicable here.","hmm",1
+University Office Hours,"Have you considered looking at the critical theory we discussed last week? The post-colonial lens could be very applicable here.","hmm, I hadn't thought of that. How would that change my approach to the main character?",0
+University Office Hours,"Also, remember that the deadline for the topic proposal was actually yesterday, but I can give you an extension until tomorrow evening.","oh",1
+University Office Hours,"Also, remember that the deadline for the topic proposal was actually yesterday, but I can give you an extension until tomorrow evening.","oh, thank you so much! I completely mixed up the dates.",0
+University Office Hours,"The key distinction you're missing is between correlation and causation. Just because two events happen sequentially doesn't mean one caused the other.","ah",1
+University Office Hours,"The key distinction you're missing is between correlation and causation. Just because two events happen sequentially doesn't mean one caused the other.","ah, I think I get it now. So my data shows a relationship, but I can't claim it's a causal one.",0
+University Office Hours,"So for your primary sources, you'll want to focus on the letters written in the first decade, before the political climate shifted.","right",1
+University Office Hours,"So for your primary sources, you'll want to focus on the letters written in the first decade, before the political climate shifted.","right, so I should ignore the later publications for this part of the argument?",0
+University Office Hours,"I suggest you write a one-page outline of your argument and email it to me, and I can give you some feedback.","ok",1
+University Office Hours,"I suggest you write a one-page outline of your argument and email it to me, and I can give you some feedback.","okay, that would be really helpful. Is a bullet-point format fine for the outline?",0
+University Office Hours,"The reason your code is throwing an error is that the variable is out of scope. You defined it inside the loop, so it can't be accessed outside of it.","i see",1
+University Office Hours,"The reason your code is throwing an error is that the variable is out of scope. You defined it inside the loop, so it can't be accessed outside of it.","i see, so if I define it before the loop starts, that should fix the problem?",0
+University Office Hours,"Make sure you're citing your sources using the Chicago style guide, not MLA. The requirements are in the syllabus.","got it",1
+University Office Hours,"Make sure you're citing your sources using the Chicago style guide, not MLA. The requirements are in the syllabus.","got it, but I'm a little unsure about how to cite a source with multiple authors in that style.",0
+University Office Hours,"You don't need to summarize the entire plot in your introduction. Just provide enough context for your thesis to be understood.","that makes sense",1
+University Office Hours,"You don't need to summarize the entire plot in your introduction. Just provide enough context for your thesis to be understood.","that makes sense, so I can cut down my first paragraph quite a bit then.",0
+University Office Hours,"The exam will cover everything from the midterm onwards, with a particular focus on the last three lectures.","i understand",1
+University Office Hours,"The exam will cover everything from the midterm onwards, with a particular focus on the last three lectures.","i understand, will the format be similar to the midterm, with multiple choice and short answer questions?",0
+University Office Hours,"You should also address the main counter-argument to your position. Acknowledging it will make your own argument stronger.","good point",1
+University Office Hours,"You should also address the main counter-argument to your position. Acknowledging it will make your own argument stronger.","good point, where would be the best place in the essay to do that?",0
+DIY YouTube Tutorial,"So you can see here, this tile doesn't sit flush with the others, which is a real problem.","ya",1
+DIY YouTube Tutorial,"So you can see here, this tile doesn't sit flush with the others, which is a real problem.","yeah, is that because the subfloor isn't level right there?",0
+DIY YouTube Tutorial,"Next, you want to take your trowel and apply a thin, even layer of the thin-set mortar, making sure you get good coverage.","uh-huh",1
+DIY YouTube Tutorial,"Next, you want to take your trowel and apply a thin, even layer of the thin-set mortar, making sure you get good coverage.","uh-huh, and which direction should the ridges from the trowel go?",0
+DIY YouTube Tutorial,"I thought this paint color would be more of a grey, but on the wall, it's looking almost blue.","hmm",1
+DIY YouTube Tutorial,"I thought this paint color would be more of a grey, but on the wall, it's looking almost blue.","hmm, maybe it will look different once it dries completely.",0
+DIY YouTube Tutorial,"And you have to be really careful here because this is a load-bearing wall.","oh",1
+DIY YouTube Tutorial,"And you have to be really careful here because this is a load-bearing wall.","oh, so we can't just cut into it without adding a temporary support?",0
+DIY YouTube Tutorial,"Alright, I'm peeling back the painter's tape... look at that clean, crisp line!","wow",1
+DIY YouTube Tutorial,"Alright, I'm peeling back the painter's tape... look at that clean, crisp line!","wow, that looks so much better than the last time we tried this.",0
+DIY YouTube Tutorial,"So you want to make sure you measure twice and cut once. There's no going back if you cut the board too short.","right",1
+DIY YouTube Tutorial,"So you want to make sure you measure twice and cut once. There's no going back if you cut the board too short.","right, can you double-check my measurement before I take it to the saw?",0
+DIY YouTube Tutorial,"I'm going to let this first coat of primer dry for at least four hours before we do anything else.","ok",1
+DIY YouTube Tutorial,"I'm going to let this first coat of primer dry for at least four hours before we do anything else.","okay, so we can start working on taping off the other room in the meantime.",0
+DIY YouTube Tutorial,"You have to wire the black wire to the black wire, and the white wire to the white. Don't mix them up.","gotcha",1
+DIY YouTube Tutorial,"You have to wire the black wire to the black wire, and the white wire to the white. Don't mix them up.","gotcha, and what do we do with the copper ground wire?",0
+DIY YouTube Tutorial,"Use the stud finder and mark each stud with a pencil so you know where to drill.","got it",1
+DIY YouTube Tutorial,"Use the stud finder and mark each stud with a pencil so you know where to drill.","got it, but the stud finder is beeping everywhere right here, what does that mean?",0
+DIY YouTube Tutorial,"We need to put down this vapor barrier first to prevent any moisture from coming up through the concrete slab and ruining the new floor.","that makes sense",1
+DIY YouTube Tutorial,"We need to put down this vapor barrier first to prevent any moisture from coming up through the concrete slab and ruining the new floor.","that makes sense, should we overlap the seams when we lay it down?",0
+DIY YouTube Tutorial,"Now just slide the cabinet into place... and it fits like a glove.","perfect",1
+DIY YouTube Tutorial,"Now just slide the cabinet into place... and it fits like a glove.","perfect, now we just need to secure it to the wall, right?",0
+DIY YouTube Tutorial,"And this new tool I bought lets me make perfect 45-degree cuts every single time.","sweet",1
+DIY YouTube Tutorial,"And this new tool I bought lets me make perfect 45-degree cuts every single time.","sweet, that's way easier than using the old miter box.",0
+DIY YouTube Tutorial,"So you're saying we should use the nail gun for this part, to make it go faster?","exactly",1
+DIY YouTube Tutorial,"So you're saying we should use the nail gun for this part, to make it go faster?","exactly, just be careful with the pressure setting so you don't drive the nails too deep.",0
+True-Crime Podcast,"So the police report says there were no signs of forced entry at the scene.","yeah",1
+True-Crime Podcast,"So the police report says there were no signs of forced entry at the scene.","yeah, which suggests the victim likely knew their attacker.",0
+True-Crime Podcast,"He made a phone call at 10:32 PM, and his cell phone pinged a tower about twenty miles away from his home.","uh-huh",1
+True-Crime Podcast,"He made a phone call at 10:32 PM, and his cell phone pinged a tower about twenty miles away from his home.","uh-huh, but is it possible he just left his phone in his car and someone else drove it?",0
+True-Crime Podcast,"The neighbor claims she heard a loud argument around midnight, but she couldn't make out the words.","hmm",1
+True-Crime Podcast,"The neighbor claims she heard a loud argument around midnight, but she couldn't make out the words.","hmm, but her testimony has been inconsistent. Didn't she initially tell police she heard nothing?",0
+True-Crime Podcast,"And here's a detail the investigators missed: there was a second set of footprints leading away from the back of the house.","oh",1
+True-Crime Podcast,"And here's a detail the investigators missed: there was a second set of footprints leading away from the back of the house.","oh, wow. And were they ever able to identify who those footprints belonged to?",0
+True-Crime Podcast,"He had taken out a life insurance policy for half a million dollars just three weeks before he disappeared.","wow",1
+True-Crime Podcast,"He had taken out a life insurance policy for half a million dollars just three weeks before he disappeared.","wow, that is an incredibly suspicious coincidence. Who was the beneficiary?",0
+True-Crime Podcast,"So his alibi is that he was at a movie, but there's no credit card transaction and he can't remember the film's name.","right",1
+True-Crime Podcast,"So his alibi is that he was at a movie, but there's no credit card transaction and he can't remember the film's name.","right, it's the kind of alibi that's designed to be impossible to verify.",0
+True-Crime Podcast,"So let's pause on the timeline for a second and talk about the potential motives.","okay",1
+True-Crime Podcast,"So let's pause on the timeline for a second and talk about the potential motives.","okay, because the financial motive seems obvious, but what if it was something more personal?",0
+True-Crime Podcast,"The anonymous tip came from a payphone, which means it couldn't be traced back to a specific person.","gotcha",1
+True-Crime Podcast,"The anonymous tip came from a payphone, which means it couldn't be traced back to a specific person.","gotcha, so it could have been anyone trying to either help or mislead the investigation.",0
+True-Crime Podcast,"The coroner's report puts the time of death between 1 AM and 3 AM.","i see",1
+True-Crime Podcast,"The coroner's report puts the time of death between 1 AM and 3 AM.","i see, and that time frame completely contradicts the main suspect's alibi.",0
+True-Crime Podcast,"The reason they focused on him initially was because he was the last person known to have seen the victim alive.","that makes sense",1
+True-Crime Podcast,"The reason they focused on him initially was because he was the last person known to have seen the victim alive.","that makes sense, but did they ever investigate the business partner he was arguing with?",0
+True-Crime Podcast,"But he had no criminal record and everyone described him as a devoted family man.","that's true",1
+True-Crime Podcast,"But he had no criminal record and everyone described him as a devoted family man.","that's true, but people can lead double lives. We've seen that time and time again.",0
+True-Crime Podcast,"And we also can't forget that the murder weapon was never found.","good point",1
+True-Crime Podcast,"And we also can't forget that the murder weapon was never found.","good point, which means the killer had the presence of mind to clean up after themselves.",0
+True-Crime Podcast,"So you're saying the whole robbery could have been staged to throw the police off the trail.","exactly",1
+True-Crime Podcast,"So you're saying the whole robbery could have been staged to throw the police off the trail.","exactly. They take a few valuable items but leave the most expensive stuff behind? It doesn't add up.",0
+Telehealth Diagnosis,"So, based on the blood work and the symptoms you've described, it does appear to be a case of hypothyroidism.","yes",1
+Telehealth Diagnosis,"So, based on the blood work and the symptoms you've described, it does appear to be a case of hypothyroidism.","yes, is that a serious condition?",0
+Telehealth Diagnosis,"What this means is that your thyroid gland isn't producing enough of certain crucial hormones.","uh-huh",1
+Telehealth Diagnosis,"What this means is that your thyroid gland isn't producing enough of certain crucial hormones.","uh-huh, and is that why I've been feeling so tired all the time?",0
+Telehealth Diagnosis,"The standard treatment is a daily hormone replacement medication, which is very effective at managing the condition.","hmm",1
+Telehealth Diagnosis,"The standard treatment is a daily hormone replacement medication, which is very effective at managing the condition.","hmm, are there any side effects I should be aware of with that medication?",0
+Telehealth Diagnosis,"The good news is that with proper treatment, people with this condition live completely normal, healthy lives.","oh",1
+Telehealth Diagnosis,"The good news is that with proper treatment, people with this condition live completely normal, healthy lives.","oh, that's a huge relief. I was really worried.",0
+Telehealth Diagnosis,"So, I'm going to send a prescription for Levothyroxine to your preferred pharmacy.","right",1
+Telehealth Diagnosis,"So, I'm going to send a prescription for Levothyroxine to your preferred pharmacy.","right, and how soon should I start taking it?",0
+Telehealth Diagnosis,"You'll need to take one pill every morning on an empty stomach, at least 30 to 60 minutes before breakfast.","okay",1
+Telehealth Diagnosis,"You'll need to take one pill every morning on an empty stomach, at least 30 to 60 minutes before breakfast.","okay, does it matter what time in the morning I take it?",0
+Telehealth Diagnosis,"We'll need to do a follow-up blood test in about six to eight weeks to make sure we have the dosage correct.","i see",1
+Telehealth Diagnosis,"We'll need to do a follow-up blood test in about six to eight weeks to make sure we have the dosage correct.","i see, and will I need to be on this medication for the rest of my life?",0
+Telehealth Diagnosis,"It's also important to avoid taking it with certain supplements, like iron or calcium, as they can interfere with absorption.","got it",1
+Telehealth Diagnosis,"It's also important to avoid taking it with certain supplements, like iron or calcium, as they can interfere with absorption.","got it, so should I stop taking my daily multivitamin then?",0
+Telehealth Diagnosis,"The reason you've been experiencing weight gain and fatigue is that your metabolism has slowed down due to the lack of thyroid hormone.","that makes sense",1
+Telehealth Diagnosis,"The reason you've been experiencing weight gain and fatigue is that your metabolism has slowed down due to the lack of thyroid hormone.","that makes sense, so will the medication help with those symptoms?",0
+Telehealth Diagnosis,"I know a new diagnosis can be overwhelming, but I want to assure you this is a very manageable condition.","i understand",1
+Telehealth Diagnosis,"I know a new diagnosis can be overwhelming, but I want to assure you this is a very manageable condition.","i understand, thank you. What are the next steps after this call?",0
+Telehealth Diagnosis,"I can send you some literature about the condition if you'd like to read more.","sure",1
+Telehealth Diagnosis,"I can send you some literature about the condition if you'd like to read more.","sure, could you also recommend any reliable websites?",0
+Awkward First Date,"I moved to Atlanta about two years ago, mostly for my job.","yeah",1
+Awkward First Date,"I moved to Atlanta about two years ago, mostly for my job.","yeah, what kind of work do you do?",0
+Awkward First Date,"So I spend most of my weekends just trying to explore different neighborhoods, like Inman Park and Virginia-Highland.","uh-huh",1
+Awkward First Date,"So I spend most of my weekends just trying to explore different neighborhoods, like Inman Park and Virginia-Highland.","uh-huh, have you been to the BeltLine Eastside Trail yet?",0
+Awkward First Date,"I'm not sure what I want to drink yet, everything on the menu looks pretty interesting.","hmm",1
+Awkward First Date,"I'm not sure what I want to drink yet, everything on the menu looks pretty interesting.","hmm, I heard their spicy margarita is really popular.",0
+Awkward First Date,"So, my profile said I have a dog, he's a golden retriever named Gus.","oh",1
+Awkward First Date,"So, my profile said I have a dog, he's a golden retriever named Gus.","oh, that's so cute! I'm more of a cat person myself, but I love all animals.",0
+Awkward First Date,"I actually spent a year backpacking through Southeast Asia after college.","wow",1
+Awkward First Date,"I actually spent a year backpacking through Southeast Asia after college.","wow, that must have been an incredible experience. What was your favorite country?",0
+Awkward First Date,"So you work in marketing, that must be a pretty creative field.","right",1
+Awkward First Date,"So you work in marketing, that must be a pretty creative field.","right, it has its moments. It's mostly a lot of spreadsheets, to be honest.",0
+Awkward First Date,"So, I guess I'll start with the calamari, if you want to share?","ok",1
+Awkward First Date,"So, I guess I'll start with the calamari, if you want to share?","okay, sounds good. Should we get the brussels sprouts too?",0
+Awkward First Date,"I was thinking of maybe walking over to that ice cream place afterwards, if you're up for it?","sure",1
+Awkward First Date,"I was thinking of maybe walking over to that ice cream place afterwards, if you're up for it?","sure, what time do they close?",0
+Awkward First Date,"So I have two older sisters, which means I was always the annoying little brother growing up.","gotcha",1
+Awkward First Date,"So I have two older sisters, which means I was always the annoying little brother growing up.","gotcha, I'm an only child, so I can't imagine what that's like.",0
+Awkward First Date,"My last job was fully remote, which was nice, but it got a little lonely, which is why I switched to a hybrid role.","i see",1
+Awkward First Date,"My last job was fully remote, which was nice, but it got a little lonely, which is why I switched to a hybrid role.","i see, do you prefer going into the office or working from home?",0
+Awkward First Date,"I majored in philosophy, but then realized it's kind of hard to get a job with that degree, so I went into tech sales.","that makes sense",1
+Awkward First Date,"I majored in philosophy, but then realized it's kind of hard to get a job with that degree, so I went into tech sales.","that makes sense, do you enjoy sales?",0
+Awkward First Date,"The traffic getting here was insane, even for a Saturday night in Atlanta.","that's true",1
+Awkward First Date,"The traffic getting here was insane, even for a Saturday night in Atlanta.","that's true, I probably should have just taken the MARTA.",0
