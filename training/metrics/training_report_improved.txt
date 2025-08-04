@@ -1,0 +1,30 @@
+============================================================
+IMPROVED BACKCHANNEL MODEL TRAINING REPORT
+============================================================
+Timestamp: 2025-08-04 11:24:01
+Training Dataset: backchannel_dataset_cleaned.csv
+Sampling Strategy: oversample
+
+IMPROVEMENTS MADE TO FASTTEXT:
+-----------------------------------
+✅ Uses both previous AND current utterances (fair comparison)
+✅ Hyperparameter tuning for combination method and regularization
+✅ Class balancing with balanced weights
+✅ Proper sampling strategy support
+✅ Multiple combination methods tested
+
+FINAL TEST SET PERFORMANCE
+------------------------------
+Metric               Baseline        TF-IDF Model    FastText Model 
+--------------------------------------------------------------------------------
+ROC-AUC              0.5843          0.9617          0.9626         
+F1-Score             0.5074          0.8770          0.8860         
+Avg Precision        0.3444          0.8977          0.8956         
+Speed (P95 ms)       0.07            1.41            0.21           
+
+LATENCY REQUIREMENTS
+--------------------
+Target: <50ms
+Baseline: ✅ PASS
+TF-IDF Model: ✅ PASS
+Improved FastText Model: ✅ PASS
