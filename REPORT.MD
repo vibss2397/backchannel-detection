@@ -189,26 +189,13 @@ def enhanced_whisper_transcribe(audio_chunk):
 **Pros:** Single-model solution, potentially lower overall latency
 **Cons:** Requires significant retraining, less flexible than modular approach
 
-### Option 2: Streaming Integration Pipeline
-Combine partial transcripts with our backchannel classifier:
-```python
-def process_streaming_audio(audio_chunk, conversation_context):
-    partial_transcript = whisper.transcribe_partial(audio_chunk)
-    
-    if partial_transcript.confidence > 0.7:
-        backchannel_result = fasttext_model.predict(
-            agent_text=conversation_context.last_agent_utterance,
-            partial_transcript=partial_transcript.text
-        )
-        
-        if backchannel_result.is_backchannel and backchannel_result.confidence > 0.8:
-            return Action.CONTINUE_SPEAKING
-    
-    return Action.WAIT_FOR_COMPLETION
-```
+### Option 2: Transformers and multilingual support
+- Transformer Exploration: I briefly experimented with sentenct transformers during development but abandoned it due to latency issues (>70ms) and marginal accuracy gains over FastText. Future work could explore model distillation or quantization techniques to make transformers viable. Even finetuning could be a viable option so we wouldn't need an embedding layer.
+- Multilingual Data Strategy: Combine existing multilingual corpora (Spanish CallHome, German Verbmobil) with LLM-generated synthetic data for 6-8 target languages, accounting for cultural backchannel variations (Japanese "そうですね" vs Arabic "نعم").
+- Architecture: Hybrid approach with language-specific FastText models for high-resource languages and universal mBERT for low-resource languages.
 
-**Pros:** Modular, leverages existing models, easier to debug and iterate
-**Cons:** Slightly higher latency due to two-stage processing
+**Pros**: Superior contextual understanding, global scalability, cultural sensitivity
+**Cons**: Increased complexity, higher computational requirements, need for multilingual evaluation datasets
 
 ### Option 3: Multi-modal Ensemble
 Combine transcription confidence, text classification, and audio features:
