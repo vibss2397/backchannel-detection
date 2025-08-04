@@ -50,6 +50,12 @@ cp output/backchannel_model_*.joblib fastapi/src/weights/trained_model.joblib
 The training process generates output directory where the trained weights live.
 It also generates the training report.
 
+### 3. Move the results from `output` directory to fastapi/src/weights
+we need 3 files:
+- `cp output/tfidf_model_*.joblib fastapi/src/weights/tfidf_model.joblib` -> for tfidf model
+- `cp output/fasttext_improved_model_*.joblib fastapi/src/weights/fasttext_model.joblib` -> remaining pipeline for fasttext
+- `cp output/cc.en.300.bin fastapi/src/weights/` -> for fasttext
+
 ### 3. Run API
 Move the weights from output directory to fastapi/src/weights before running fastapi
 ```bash
